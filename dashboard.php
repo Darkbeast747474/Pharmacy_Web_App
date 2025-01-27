@@ -1,54 +1,75 @@
+<?php
+include "Db_Config.php";
+
+// Calculate date ranges for past 1 day and 7 days
+$today = date("Y-m-d");
+$one_day_ago = date("Y-m-d", strtotime("-1 day"));
+$seven_days_ago = date("Y-m-d", strtotime("-7 days"));
+
+// Calculate total sales for the past 1 day
+$sql_sales_1day = "SELECT SUM(total_amount) as total_sales 
+                   FROM sales 
+                   WHERE sale_date >= '$one_day_ago' AND sale_date <= '$today'";
+$result_sales_1day = mysqli_query($con, $sql_sales_1day);
+$row_sales_1day = mysqli_fetch_assoc($result_sales_1day);
+$total_sales_1day = $row_sales_1day['total_sales'];
+
+// Calculate total sales for the past 7 days
+$sql_sales_7days = "SELECT SUM(total_amount) as total_sales 
+                   FROM sales 
+                   WHERE sale_date >= '$seven_days_ago' AND sale_date <= '$today'";
+$result_sales_7days = mysqli_query($con, $sql_sales_7days);
+$row_sales_7days = mysqli_fetch_assoc($result_sales_7days);
+$total_sales_7days = $row_sales_7days['total_sales'];
+
+// Get low stock medications
+$sql_low_stock = "SELECT * FROM medications WHERE stock_quantity < 10"; // Adjust threshold as needed
+$result_low_stock = mysqli_query($con, $sql_low_stock);
+$low_stock_medications = mysqli_fetch_all($result_low_stock, MYSQLI_ASSOC);
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="static/dashboard.css">
-    <title>Document</title>
+    <title>Pharmacy Dashboard</title>
+    <link rel="stylesheet" href="static/Dashboard.css">
 </head>
-
 <body>
-    <nav class="navbar">
-        <h1><i class="fa-solid fa-stethoscope"></i>PMS</h1>
-        <ul class="nav">
-            <div>
-                <li><a href="#" onclick="load()"><i class="fas fa-tv"></i> Dashboard</a></li>
-                <li><a href="#" onclick="load()"><i class=""><i class="fa-solid fa-magnifying-glass"></i>Invoice search
-                            </search></a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-warehouse"></i>Medicine Inventory</a></li>
-            </div><br>
-            <div>
-                <p>Pharmacy Company</p>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-plus"></i>Add company</a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-briefcase"></i>Manage Company</a></li>
-            </div><br>
-            <div>
-                <p>Medicine</p>
-                <li><a href="#" onclick="load('manage_medications.php')"><i class="fa-solid fa-pills"></i>Manage
-                        Medicine</a></li>
-            </div><br>
-            <div>
-                <p>Pharmacist</p>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-user"></i>Add Pharmacist</a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-briefcase"></i>Manage Pharmacist</a></li>
-            </div><br>
-            <div>
-                <p>Reports</p>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-chart-simple"></i>Stack Reports</a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-palette"></i>Pharmacist Wise Reports </a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-receipt"></i>Sales Reports</a></li>
-            </div>
+
+    <h1>Pharmacy Dashboard</h1>
+
+    <div class="dashboard-section">
+        <h2>Sales Summary</h2>
+        <ul>
+            <li>Total Sales (Past 1 Day): <?php echo number_format($total_sales_1day, 2); ?></li>
+            <li>Total Sales (Past 7 Days): <?php echo number_format($total_sales_7days, 2); ?></li>
         </ul>
-    </nav>
-    <iframe class="contents" id="content" src="" frameborder="0"></iframe>
+    </div>
+
+    <div class="dashboard-section">
+        <h2>Low Stock Medications</h2>
+        <?php if (count($low_stock_medications) > 0): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medication Name</th>
+                        <th>Stock Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($low_stock_medications as $medication): ?>
+                        <tr>
+                            <td><?php echo $medication['name']; ?></td>
+                            <td><?php echo $medication['stock_quantity']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No medications with low stock.</p>
+        <?php endif; ?>
+    </div>
+
 </body>
-
-<script>
-    function load(url) {
-        document.getElementById("content").src = url;
-    }
-</script>
-
 </html>

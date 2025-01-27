@@ -29,6 +29,7 @@ th {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    width: 80%;
 }
 
 .error {
@@ -37,4 +38,5 @@ th {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    width: 80%;
 }
