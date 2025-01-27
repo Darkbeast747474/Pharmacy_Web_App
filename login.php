@@ -42,7 +42,7 @@ if ($_REQUEST) {
     if ($result->num_rows > 0) {
         session_start();
         $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
+        header("Location: Interface.php");
         exit();
     } else {
         $script = <<<EOF
