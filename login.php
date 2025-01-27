@@ -26,6 +26,7 @@
         <div id="loginForm"></div>
     </div>
 </body>
+
 </html>
 
 <?php
@@ -41,7 +42,7 @@ if ($_REQUEST) {
     if ($result->num_rows > 0) {
         session_start();
         $_SESSION['username'] = $username;
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit();
     } else {
         $script = <<<EOF
