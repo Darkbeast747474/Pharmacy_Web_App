@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 function redirect_to_edit($medication_id)
 {
     if (isset($_POST["edit"])) {
-        header("Location: edit.php?id=$medication_id");
+        header("Location: edit_medications.php?id=$medication_id");
         exit();
     }
 }
