@@ -1,10 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Smooch+Sans:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Smooch Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+}
 body {
     font-family: sans-serif;
-    margin: 20px;
+    /* margin: 20px; */
+    /* margin: 0;
+    padding: 0; */
+   background:linear-gradient(to right, #a8c0d7, #d1e7f1, #e8f9f9);
+  
 }
 
-h2 {
+h1 {
     margin-bottom: 20px;
+    /* border: 2px solid black; */
+    width: max-content;
+    position: relative;
+    left: 35%;
+    font-size: 3rem; /*1 root em =16px*/
+    font-weight: bolder;
+    
 }
 
 .med_list {
@@ -40,3 +62,32 @@ th {
     margin-bottom: 10px;
     width: 80%;
 }
+h2{
+    width: max-content;
+    box-shadow: 0px 4px 5px rgb(26, 22, 22);
+    left: 20%;
+}
+input
+{
+    width: 500px;
+    height: 2rem;
+    margin: 5px;
+    border-radius: 4px;
+}
+label
+{
+    font-size: 25px;
+}
+input:focus { /*outlines the input box*/
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px #0056b3;
+    outline: none;
+  }
+  .form
+  {
+    display: flex;
+    justify-content: space-between;
+    width: 30px;
+    
+  }
+ 

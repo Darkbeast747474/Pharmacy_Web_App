@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 function redirect_to_edit($medication_id)
 {
     if (isset($_POST["edit"])) {
-        header("Location: edit.php?id=$medication_id");
+        header("Location: edit_medications.php?id=$medication_id"); 
         exit();
     }
 }
@@ -50,7 +50,7 @@ function redirect_to_edit($medication_id)
 
 <body>
 
-    <h2>Manage Medications</h2>
+    <h1>Manage Medications</h1>
 
     <?php if (isset($success_message)): ?>
         <div class="success"><?php echo $success_message; ?></div>
@@ -60,13 +60,13 @@ function redirect_to_edit($medication_id)
         <div class="error"><?php echo $error_message; ?></div>
     <?php endif; ?>
 
-    <h3>Add New Medication</h3>
+    <!-- <h2>Add New Medication</h2> -->
     <form method="post" action="">
-        <div>
+        <div >
             <label for="medication_name">Medication Name:</label>
             <input type="text" name="medication_name" required>
         </div>
-        <div>
+        <div id="m">
             <label for="generic_name">Generic Name:</label>
             <input type="text" name="generic_name">
         </div>
@@ -94,8 +94,9 @@ function redirect_to_edit($medication_id)
             <label for="unit_price">Unit Price:</label>
             <input type="text" name="unit_price" required>
         </div>
+        
         <button type="submit" name="submit">Add Medication</button>
-    </form>
+    </form> 
 
     <h3>Medication List</h3>
     <table class="med_list">
