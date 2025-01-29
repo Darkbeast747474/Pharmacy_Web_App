@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($con, $sql)) {
         $success_message = "Medication added successfully!";
     } else {
-        $error_message = "Error: " . mysqli_error($con);
+        $error_message = "Error While Adding Medication ";
     }
 }
 
@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 function redirect_to_edit($medication_id)
 {
     if (isset($_POST["edit"])) {
-        header("Location: edit_medications.php?id=$medication_id"); 
+        header("Location: edit_medications.php?id=$medication_id");
         exit();
     }
 }
@@ -50,8 +50,6 @@ function redirect_to_edit($medication_id)
 
 <body>
 
-    <h1>Manage Medications</h1>
-
     <?php if (isset($success_message)): ?>
         <div class="success"><?php echo $success_message; ?></div>
     <?php endif; ?>
@@ -60,85 +58,91 @@ function redirect_to_edit($medication_id)
         <div class="error"><?php echo $error_message; ?></div>
     <?php endif; ?>
 
-    <!-- <h2>Add New Medication</h2> -->
-    <form method="post" action="">
-        <div >
-            <label for="medication_name">Medication Name:</label>
-            <input type="text" name="medication_name" required>
-        </div>
-        <div id="m">
-            <label for="generic_name">Generic Name:</label>
-            <input type="text" name="generic_name">
-        </div>
-        <div>
-            <label for="dosage">Dosage:</label>
-            <input type="text" name="dosage">
-        </div>
-        <div>
-            <label for="manufacturer">Manufacturer:</label>
-            <input type="text" name="manufacturer">
-        </div>
-        <div>
-            <label for="category">Category:</label>
-            <input type="text" name="category">
-        </div>
-        <div>
-            <label for="expiry_date">Expiry Date:</label>
-            <input type="date" name="expiry_date" required>
-        </div>
-        <div>
-            <label for="stock_quantity">Stock Quantity:</label>
-            <input type="number" name="stock_quantity" required>
-        </div>
-        <div>
-            <label for="unit_price">Unit Price:</label>
-            <input type="text" name="unit_price" required>
-        </div>
-        
-        <button type="submit" name="submit">Add Medication</button>
-    </form> 
-
-    <h3>Medication List</h3>
-    <table class="med_list">
-        <thead>
-            <tr>
-                <th>Medication Name</th>
-                <th>Generic Name</th>
-                <th>Dosage</th>
-                <th>Manufacturer</th>
-                <th>Category</th>
-                <th>Expiry Date</th>
-                <th>Stock Quantity</th>
-                <th>Unit Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (count($medications) > 0): ?>
-                <?php foreach ($medications as $medication): ?>
+    <div class="container">
+        <h2 class="mlist">Medication List</h2>
+        <div class="med_list">
+            <table>
+                <thead>
                     <tr>
-                        <td><?php echo $medication['name']; ?></td>
-                        <td><?php echo $medication['generic_name']; ?></td>
-                        <td><?php echo $medication['dosage']; ?></td>
-                        <td><?php echo $medication['manufacturer']; ?></td>
-                        <td><?php echo $medication['category']; ?></td>
-                        <td><?php echo $medication['expiry_date']; ?></td>
-                        <td><?php echo $medication['stock_quantity']; ?></td>
-                        <td><?php echo $medication['unit_price']; ?></td>
-                        <td>
-                            <form action="<?php redirect_to_edit($medication['medication_id']); ?>" method="post">
-                                <button type="submit" name="edit">Edit</button>
-                            </form>
-                        </td>
+                        <th>Medication Name</th>
+                        <th>Generic Name</th>
+                        <th>Dosage</th>
+                        <th>Manufacturer</th>
+                        <th>Category</th>
+                        <th>Expiry Date</th>
+                        <th>Stock Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Actions</th>
                     </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="9">No medications found.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                    <?php if (count($medications) > 0): ?>
+                        <?php foreach ($medications as $medication): ?>
+                            <tr>
+                                <td><?php echo $medication['name']; ?></td>
+                                <td><?php echo $medication['generic_name']; ?></td>
+                                <td><?php echo $medication['dosage']; ?></td>
+                                <td><?php echo $medication['manufacturer']; ?></td>
+                                <td><?php echo $medication['category']; ?></td>
+                                <td><?php echo $medication['expiry_date']; ?></td>
+                                <td><?php echo $medication['stock_quantity']; ?></td>
+                                <td><?php echo $medication['unit_price']; ?></td>
+                                <td>
+                                    <form action="<?php redirect_to_edit($medication['medication_id']); ?>" method="post">
+                                        <button type="submit" name="edit">Edit</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="9">No medications found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="ad">Add New Medication</h2>
+        <div class="med_add">
+            <form method="post" action="">
+                <div>
+                    <label for="medication_name">Medication Name:</label>
+                    <input type="text" name="medication_name" required>
+                </div>
+                <div id="m">
+                    <label for="generic_name">Generic Name:</label>
+                    <input type="text" name="generic_name">
+                </div>
+                <div>
+                    <label for="dosage">Dosage:</label>
+                    <input type="text" name="dosage">
+                </div>
+                <div>
+                    <label for="manufacturer">Manufacturer:</label>
+                    <input type="text" name="manufacturer">
+                </div>
+                <div>
+                    <label for="category">Category:</label>
+                    <input type="text" name="category">
+                </div>
+                <div>
+                    <label for="expiry_date">Expiry Date:</label>
+                    <input type="date" name="expiry_date" required>
+                </div>
+                <div>
+                    <label for="stock_quantity">Stock Quantity:</label>
+                    <input type="number" name="stock_quantity" required>
+                </div>
+                <div>
+                    <label for="unit_price">Unit Price:</label>
+                    <input type="number" name="unit_price" required>
+                </div>
+
+            </form>
+            <button class="submit" type="submit" name="submit">Add Medication</button>
+        </div>
+    </div>
 </body>
 
 </html>
