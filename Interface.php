@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="static/interface.css">
+    <link rel="stylesheet" href="static/Interface.css">
     <title>Document</title>
 </head>
 
 <body>
     <nav class="navbar">
         <h1><i class="fa-solid fa-stethoscope"></i>PMS</h1>
-        <ul class="nav">
+        <ul class="nav_list">
             <div>
-                <li><a href="#" onclick="load()"><i class="fas fa-tv"></i> Dashboard</a></li>
-                <li><a href="#" onclick="load()"><i class=""><i class="fa-solid fa-magnifying-glass"></i>Invoice search
-                            </search></a></li>
+                <li><a href="#" onclick="load('Dashboard.php')"><i class="fas fa-tv"></i> Dashboard</a></li>
+                <li><a href="#" onclick="load()"><i class="fa-solid fa-magnifying-glass"></i>Invoice search</a></li>
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-warehouse"></i>Medicine Inventory</a></li>
             </div><br>
             <div>
@@ -42,7 +41,7 @@
             </div>
         </ul>
     </nav>
-    <iframe class="contents" id="content" src="" frameborder="0"></iframe>
+    <iframe class="contents" id="content" src="manage_medications.php" frameborder="0"></iframe>
 </body>
 
 <script>
