@@ -138,9 +138,9 @@ function redirect_to_edit($medication_id)
                     <label for="unit_price">Unit Price:</label>
                     <input type="number" name="unit_price" required>
                 </div>
-
+                <button class="submit" type="submit" name="submit">Add Medication</button>
             </form>
-            <button class="submit" type="submit" name="submit">Add Medication</button>
+           
         </div>
     </div>
 </body>
