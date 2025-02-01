@@ -49,7 +49,7 @@ function redirect_to_edit($medication_id)
 </head>
 
 <body>
-
+   
     <?php if (isset($success_message)): ?>
         <div class="success"><?php echo $success_message; ?></div>
     <?php endif; ?>
@@ -61,6 +61,7 @@ function redirect_to_edit($medication_id)
     <div class="container">
         <h2 class="mlist">Medication List</h2>
         <div class="med_list">
+            
             <table>
                 <thead>
                     <tr>
@@ -138,11 +139,12 @@ function redirect_to_edit($medication_id)
                     <label for="unit_price">Unit Price:</label>
                     <input type="number" name="unit_price" required>
                 </div>
-                <button class="submit" type="submit" name="submit">Add Medication</button>
+                <button class="submit" type="submit" name="submit">Submit</button>
             </form>
            
         </div>
     </div>
+   
 </body>
 
 </html>

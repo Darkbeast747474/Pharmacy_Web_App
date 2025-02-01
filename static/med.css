@@ -13,20 +13,30 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #291e3b;
+   
+    
 }
 
 .container {
+   
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    
+
+   
 }
 
 .med_list {
     position: absolute;
     left: 15%;
-    margin-top: 75px;
+    margin-top: 100px;
     border-collapse: collapse;
     width: fit-content;
+    height: 300px;   
+    top: 55%;
+
+    
 }
 
 th,
@@ -34,10 +44,19 @@ td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    color: white;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   position: relative;
+   right: 11%;
+   overflow: auto;
+  
+
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #131111;
+    
 }
 
 
@@ -45,6 +64,11 @@ input {
     width: 90%;
     border-radius: 4px;
     margin-right: 10px;
+    padding: 7px;
+    margin-left: 10px;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 label {
@@ -53,60 +77,80 @@ label {
 }
 
 input:focus {
-    border-color: #000000;
-    box-shadow: 0px 0px 8px #000000;
+    border-color: #5a9bff;
+    box-shadow: 0px 0px 10px #5a9bff;
     outline: none;
 }
 
 .mlist {
-    margin-top: 10px;
+   
     position: absolute;
     left: 35%;
-    font-size: 30px;
+    top: 57%;
+    
+    
+    
 }
 
 .ad {
     position: absolute;
-    top: 40%;
-    left: 35%;
+    bottom: 92%;
+    left: 33%;
     margin-top: 40px;
-    width: fit-content;
+   
+    
+   
 }
 
 .med_add {
     position: absolute;
-    top: 45%;
+    top: 10;
     left: 22%;
     margin-top: 70px;
-    width: 500px;
+    width: 650px;
+  border-radius: 10px;
+  padding:20px;
+  backdrop-filter: blur(10px);
+
+    
 }
 
 .med_add form{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    
 }
 
 .submit{
-    background-color: #000000;
+   
+    background-color: #514cde;
+    font-size: larger;
     color: #ddd;
     position: absolute;
-    left: 45%;
+    top: 89%;
+    width: 95px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
-    width: 10%;
+   padding: 10px;
+    left: 40%;
+    box-shadow: 0 0 5px blue;
+    font-weight: bold;
 }
 
 .success {
     position: absolute;
-    left: 20%;
-    background-color: #4CAF50;
+    left: 45%;
+    background-color: #39db36;
     color: white;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 80%;
+    width: 40%;
+    align-items: center;
+    z-index: 1;
+   
 }
 
 .error {
@@ -119,3 +163,20 @@ input:focus {
     margin-bottom: 10px;
     width: 80%;
 }
+label
+{
+    color: white;
+    font-weight: bolder;
+}
+
+h2
+{
+    position:relative;
+    color: white;
+    font-size: 57px;
+    font-weight: bolder;
+    left: 30%;
+    bottom: 47%;
+}
+  
+   
