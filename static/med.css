@@ -24,7 +24,7 @@ body {
 .med_list {
     position: absolute;
     left: 15%;
-    margin-top: 75px;
+    margin-top: 70px;
     border-collapse: collapse;
     width: fit-content;
 }
@@ -67,55 +67,58 @@ input:focus {
 
 .ad {
     position: absolute;
-    top: 40%;
-    left: 35%;
+    top: 45%;
+    left: 33%;
     margin-top: 40px;
     width: fit-content;
+    font-size: xx-large;
 }
 
 .med_add {
     position: absolute;
-    top: 45%;
-    left: 22%;
+    top: 47%;
+    left: 23%;
     margin-top: 70px;
     width: 500px;
 }
 
 .med_add form{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .submit{
+    position: absolute;
+    top: 90%;
+    left: 40%;
     background-color: #000000;
     color: #ddd;
-    position: absolute;
-    left: 45%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
-    width: 10%;
+    width: 15%;
+    height: 10%;
 }
 
 .success {
     position: absolute;
-    left: 20%;
+    top: 70%;
+    left: 60%;
     background-color: #4CAF50;
     color: white;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 80%;
 }
 
 .error {
     position: absolute;
-    left: 20%;
+    top: 70%;
+    left: 60%;
     background-color: #f44336;
     color: white;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
-    width: 80%;
 }

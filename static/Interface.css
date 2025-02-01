@@ -8,9 +8,11 @@
     font-weight: 500;
     font-style: normal; */
     font-family: 'Roboto', sans-serif;
-    font-weight: 700; /* Bold for emphasis */
-    font-size: 20px; /* Adjust size as needed */
-    
+    font-weight: 700;
+    /* Bold for emphasis */
+    font-size: 20px;
+    /* Adjust size as needed */
+
 }
 
 body {
@@ -34,9 +36,8 @@ body {
     overflow-y: auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 1;
-    width: 210px;
+    width: 240px;
     max-height: 100vh;
-    
 }
 
 
@@ -85,30 +86,29 @@ nav h1 {
     height: 100%;
     border: none;
     overflow: scroll;
-} 
-.navbar
-{
-    background-color:#1a1a2e;
 }
-.navbar li a:focus
-{
-   
-    border-radius: 5px; /* Optional: Makes it look better */
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Softer glow effect */
-    /* outline: 2px solid #00a8cc; Cyan blue outline */
-    background-color: rgba(0, 168, 204, 0.2);
-    padding: 8px 12px; /* Better padding */
-    transition: all 0.3s ease-in-out; /* Smooth transition */
-    white-space: nowrap; /* Prevents text wrapping */
-    overflow: hidden;
-   
 
+.navbar {
+    background-color: #1a1a2e;
 }
-.navbar p{
+
+.navbar li a:focus {
+    
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    background-color: rgba(0, 168, 204, 0.2);
+    padding: 8px 12px;
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navbar p {
     color: #00a8cc;
 }
+
 .navbar li a {
     display: block;
-    word-wrap: break-word; /* Allow long words to break and prevent overflow */
-    overflow: hidden; /* Prevents any content from overflowing out of the box */
+    word-wrap: break-word;
+    overflow: hidden;
 }
