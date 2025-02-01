@@ -59,6 +59,45 @@ function redirect_to_edit($medication_id)
     <?php endif; ?>
 
     <div class="container">
+        <h2 class="ad">Add New Medication</h2>
+        <div class="med_add">
+            <form method="post" action="">
+                <div>
+                    <label for="medication_name">Medication Name:</label>
+                    <input type="text" name="medication_name" required>
+                </div>
+                <div id="m">
+                    <label for="generic_name">Generic Name:</label>
+                    <input type="text" name="generic_name">
+                </div>
+                <div>
+                    <label for="dosage">Dosage:</label>
+                    <input type="text" name="dosage">
+                </div>
+                <div>
+                    <label for="manufacturer">Manufacturer:</label>
+                    <input type="text" name="manufacturer">
+                </div>
+                <div>
+                    <label for="category">Category:</label>
+                    <input type="text" name="category">
+                </div>
+                <div>
+                    <label for="expiry_date">Expiry Date:</label>
+                    <input type="date" name="expiry_date" required>
+                </div>
+                <div>
+                    <label for="stock_quantity">Stock Quantity:</label>
+                    <input type="number" name="stock_quantity" required>
+                </div>
+                <div>
+                    <label for="unit_price">Unit Price:</label>
+                    <input type="number" name="unit_price" required>
+                </div>
+                <button class="submit" type="submit" name="submit">Add Medication</button>
+            </form>
+        </div>
+        
         <h2 class="mlist">Medication List</h2>
         <div class="med_list">
             
@@ -103,6 +142,7 @@ function redirect_to_edit($medication_id)
                 </tbody>
             </table>
         </div>
+<<<<<<< HEAD
 
         <h2 class="ad">Add New Medication</h2>
         <div class="med_add">
@@ -143,6 +183,8 @@ function redirect_to_edit($medication_id)
             </form>
            
         </div>
+=======
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     </div>
    
 </body>

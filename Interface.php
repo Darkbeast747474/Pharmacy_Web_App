@@ -18,11 +18,6 @@
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-magnifying-glass"></i>InvoiceSearch</a></li>
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-warehouse"></i>MedicineInventory</a></li>
             </div><br>
-            <!-- <div>
-                <p>Pharmacy Company</p>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-plus"></i>Add company</a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-briefcase"></i>Manage Company</a></li>
-            </div><br> -->
             <div>
                 <p>Medicine</p>
                 <li><a href="#" onclick="load('manage_medications.php')"><i class="fa-solid fa-pills"></i>ManageMedicine</a></li>
@@ -40,7 +35,7 @@
             </div>
         </ul>
     </nav>
-    <iframe class="contents" id="content" src="manage_medications.php" frameborder="0"></iframe>
+    <iframe class="contents" id="content" src="Dashboard.php" frameborder="0"></iframe>
 </body>
 
 <script>
