@@ -15,7 +15,7 @@
         <ul class="nav_list">
             <div>
                 <li><a href="#" onclick="load('Dashboard.php')"><i class="fas fa-tv"></i> Dashboard</a></li>
-                <li><a href="#" onclick="load()"><i class="fa-solid fa-magnifying-glass"></i>InvoiceSearch</a></li>
+                <li><a href="#" onclick="load('sales.php')"><i class="fa-solid fa-magnifying-glass"></i>Invoice</a></li>
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-warehouse"></i>MedicineInventory</a></li>
             </div><br>
             <div>
@@ -30,7 +30,6 @@
             <div>
                 <p>Reports</p>
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-chart-simple"></i>StackReports</a></li>
-                <!-- <li><a href="#" onclick="load()"><i class="fa-solid fa-palette"></i>Pharmacist Wise Reports </a></li> -->
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-receipt"></i>SalesReports</a></li>
             </div>
         </ul>
