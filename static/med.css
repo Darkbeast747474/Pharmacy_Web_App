@@ -19,16 +19,6 @@ body {
 
 .container {
     position: absolute;
-<<<<<<< HEAD
-    left: 15%;
-    margin-top: 100px;
-    border-collapse: collapse;
-    width: fit-content;
-    height: 300px;   
-    top: 55%;
-
-    
-=======
     top: 5%;
     left: 10%;
     display: grid;
@@ -36,7 +26,6 @@ body {
     gap: 80px;
     align-self: center;
     justify-items: center;
->>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
 }
 
 .med_list { 
@@ -79,32 +68,6 @@ label {
 }
 
 .mlist {
-<<<<<<< HEAD
-   
-    position: absolute;
-    left: 35%;
-    top: 57%;  
-}
-
-.ad {
-    position: absolute;
-    bottom: 92%;
-    left: 33%;
-    margin-top: 40px;
-}
-
-.med_add {
-    position: absolute;
-    top: 10;
-    left: 22%;
-    margin-top: 70px;
-    width: 650px;
-  border-radius: 10px;
-  padding:20px;
-  backdrop-filter: blur(10px);
-
-    
-=======
     justify-self: center;
     color: white;
     font-size: 40px;
@@ -122,7 +85,6 @@ label {
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.5);
     height: 350px; 
->>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
 }
 
 .med_add form {
@@ -132,73 +94,13 @@ label {
     justify-content: center;
 }
 
-<<<<<<< HEAD
-.submit{
-   
-    background-color: #514cde;
-    font-size: larger;
-    color: #ddd;
-    position: absolute;
-    top: 89%;
-    width: 95px;
-=======
 .submit {
     background-color: #000000;
     color: #ddd;
->>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
-<<<<<<< HEAD
-   padding: 10px;
-    left: 40%;
-    box-shadow: 0 0 5px blue;
-    font-weight: bold;
-}
-
-.success {
-    position: absolute;
-    left: 45%;
-    background-color: #39db36;
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 40%;
-    align-items: center;
-    z-index: 1;
-   
-}
-
-.error {
-    position: absolute;
-    left: 20%;
-    background-color: #f44336;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 80%;
-}
-label
-{
-    color: white;
-    font-weight: bolder;
-}
-
-h2
-{
-    position:relative;
-    color: white;
-    font-size: 57px;
-    font-weight: bolder;
-    left: 30%;
-    bottom: 47%;
-}
-  
-   
-=======
     width: 70px;
     height: 40px;
     justify-self: center;
@@ -227,4 +129,3 @@ h2
 .error {
     background-color: #f44336;
 }
->>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
