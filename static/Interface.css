@@ -3,16 +3,18 @@
 * {
     margin: 0;
     padding: 0;
-    /* font-family: "Smooch Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal; */
     font-family: 'Roboto', sans-serif;
+<<<<<<< HEAD
+    font-weight: 700; 
+    font-size: 20px; 
+    
+=======
     font-weight: 700;
     /* Bold for emphasis */
     font-size: 20px;
     /* Adjust size as needed */
 
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 body {

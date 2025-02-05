@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('tim-mossholder-xY56WiUYFjk-unsplash.jpg');
+    background-image: url('10529590.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -21,8 +21,10 @@ body {
     color: #fff;
     border-radius: 10px;
     padding: 40px 30px;
-    border: 2px solid #fff;
+    border: 2px solid #1e71cf;
     backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 5px black ;
+
 }
 
 .box h1 {
@@ -32,6 +34,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 20px;
     font-style: normal;
+   color: #1e71cf;
 }
 
 .box .input_box {
@@ -85,7 +88,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #1e71cf;
 }
 

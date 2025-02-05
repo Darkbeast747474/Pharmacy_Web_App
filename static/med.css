@@ -13,20 +13,34 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #291e3b;
+   
+    
 }
 
 .container {
+   
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    
+
+   
 }
 
 .med_list {
     position: absolute;
     left: 15%;
+<<<<<<< HEAD
+    margin-top: 100px;
+=======
     margin-top: 70px;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     border-collapse: collapse;
     width: fit-content;
+    height: 300px;   
+    top: 55%;
+
+    
 }
 
 th,
@@ -34,10 +48,19 @@ td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    color: white;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   position: relative;
+   right: 11%;
+   overflow: auto;
+  
+
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #131111;
+    
 }
 
 
@@ -45,6 +68,11 @@ input {
     width: 90%;
     border-radius: 4px;
     margin-right: 10px;
+    padding: 7px;
+    margin-left: 10px;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 label {
@@ -53,37 +81,73 @@ label {
 }
 
 input:focus {
-    border-color: #000000;
-    box-shadow: 0px 0px 8px #000000;
+    border-color: #5a9bff;
+    box-shadow: 0px 0px 10px #5a9bff;
     outline: none;
 }
 
 .mlist {
-    margin-top: 10px;
+   
     position: absolute;
     left: 35%;
-    font-size: 30px;
+    top: 57%;
+    
+    
+    
 }
 
 .ad {
     position: absolute;
+<<<<<<< HEAD
+    bottom: 92%;
+    left: 33%;
+    margin-top: 40px;
+   
+    
+   
+=======
     top: 45%;
     left: 33%;
     margin-top: 40px;
     width: fit-content;
     font-size: xx-large;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .med_add {
     position: absolute;
+<<<<<<< HEAD
+    top: 10;
+    left: 22%;
+=======
     top: 47%;
     left: 23%;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     margin-top: 70px;
-    width: 500px;
+    width: 650px;
+  border-radius: 10px;
+  padding:20px;
+  backdrop-filter: blur(10px);
+
+    
 }
 
 .med_add form{
     display: grid;
+<<<<<<< HEAD
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.submit{
+   
+    background-color: #514cde;
+    font-size: larger;
+    color: #ddd;
+    position: absolute;
+    top: 89%;
+    width: 95px;
+=======
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -93,23 +157,43 @@ input:focus {
     left: 40%;
     background-color: #000000;
     color: #ddd;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
+<<<<<<< HEAD
+   padding: 10px;
+    left: 40%;
+    box-shadow: 0 0 5px blue;
+    font-weight: bold;
+=======
     width: 15%;
     height: 10%;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .success {
     position: absolute;
+<<<<<<< HEAD
+    left: 45%;
+    background-color: #39db36;
+=======
     top: 70%;
     left: 60%;
     background-color: #4CAF50;
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     color: white;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 10px;
+<<<<<<< HEAD
+    width: 40%;
+    align-items: center;
+    z-index: 1;
+   
+=======
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .error {
@@ -121,4 +205,26 @@ input:focus {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+<<<<<<< HEAD
+    width: 80%;
 }
+label
+{
+    color: white;
+    font-weight: bolder;
+}
+
+h2
+{
+    position:relative;
+    color: white;
+    font-size: 57px;
+    font-weight: bolder;
+    left: 30%;
+    bottom: 47%;
+}
+  
+   
+=======
+}
+>>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
