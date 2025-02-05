@@ -30,11 +30,7 @@ body {
 .med_list {
     position: absolute;
     left: 15%;
-<<<<<<< HEAD
     margin-top: 100px;
-=======
-    margin-top: 70px;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     border-collapse: collapse;
     width: fit-content;
     height: 300px;   
@@ -90,39 +86,20 @@ input:focus {
    
     position: absolute;
     left: 35%;
-    top: 57%;
-    
-    
-    
+    top: 57%;  
 }
 
 .ad {
     position: absolute;
-<<<<<<< HEAD
     bottom: 92%;
     left: 33%;
     margin-top: 40px;
-   
-    
-   
-=======
-    top: 45%;
-    left: 33%;
-    margin-top: 40px;
-    width: fit-content;
-    font-size: xx-large;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .med_add {
     position: absolute;
-<<<<<<< HEAD
     top: 10;
     left: 22%;
-=======
-    top: 47%;
-    left: 23%;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     margin-top: 70px;
     width: 650px;
   border-radius: 10px;
@@ -134,7 +111,6 @@ input:focus {
 
 .med_add form{
     display: grid;
-<<<<<<< HEAD
     grid-template-columns: repeat(3, 1fr);
     
 }
@@ -147,65 +123,38 @@ input:focus {
     position: absolute;
     top: 89%;
     width: 95px;
-=======
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.submit{
-    position: absolute;
-    top: 90%;
-    left: 40%;
-    background-color: #000000;
-    color: #ddd;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
-<<<<<<< HEAD
    padding: 10px;
     left: 40%;
     box-shadow: 0 0 5px blue;
     font-weight: bold;
-=======
-    width: 15%;
-    height: 10%;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .success {
     position: absolute;
-<<<<<<< HEAD
     left: 45%;
     background-color: #39db36;
-=======
-    top: 70%;
-    left: 60%;
-    background-color: #4CAF50;
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
     color: white;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 10px;
-<<<<<<< HEAD
     width: 40%;
     align-items: center;
     z-index: 1;
    
-=======
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
 }
 
 .error {
     position: absolute;
-    top: 70%;
-    left: 60%;
+    left: 20%;
     background-color: #f44336;
     color: white;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
-<<<<<<< HEAD
     width: 80%;
 }
 label
@@ -225,6 +174,3 @@ h2
 }
   
    
-=======
-}
->>>>>>> c6a799bc7356c207d702a82aa4f4f087b2f502cf
