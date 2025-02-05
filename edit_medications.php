@@ -34,7 +34,9 @@ if (isset($_POST['update'])) {
 
     // Update the medication data in the database
     $sql = "UPDATE medications 
-            SET name = '$medication_name', 
+            SET 
+                medication_id = '$medication_id',
+                name = '$medication_name', 
                 generic_name = '$generic_name', 
                 dosage = '$dosage', 
                 manufacturer = '$manufacturer', 
@@ -56,18 +58,18 @@ if (isset($_POST['update'])) {
 }
 
 if (isset($_POST['delete'])) {
-        include "Db_Config.php";
-        $sql = "DELETE FROM medications WHERE medication_id = $medication_id";
-        if (mysqli_query($con, $sql)) {
-            $success_message = "Medication deleted successfully!";
-            header("Location: manage_medications.php");
-            exit();
-        } else {
-            $error_message = "Error in delete procedure";
-            header("Location: edit.php?id=$medication_id");
-            exit();
-        }
+    include "Db_Config.php";
+    $sql = "DELETE FROM medications WHERE medication_id = $medication_id";
+    if (mysqli_query($con, $sql)) {
+        $success_message = "Medication deleted successfully!";
+        header("Location: manage_medications.php");
+        exit();
+    } else {
+        $error_message = "Error in delete procedure";
+        header("Location: edit.php?id=$medication_id");
+        exit();
     }
+}
 
 ?>
 
@@ -76,7 +78,97 @@ if (isset($_POST['delete'])) {
 
 <head>
     <title>Edit Medication</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 60%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button[name="update"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button[name="delete"] {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .success,
+        .error {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -92,7 +184,10 @@ if (isset($_POST['delete'])) {
     <?php endif; ?>
 
     <form method="post" action="">
-        <input type="hidden" name="medication_id" value="<?php echo $medication['medication_id']; ?>">
+        <div>
+            <label for="medication_id">Medication ID:</label>
+            <input type="number" name="medication_id" value="<?php echo $medication['medication_id']; ?>" required>
+        </div>
         <div>
             <label for="medication_name">Medication Name:</label>
             <input type="text" name="medication_name" value="<?php echo $medication['name']; ?>" required>

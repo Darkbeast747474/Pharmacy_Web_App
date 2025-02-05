@@ -7,28 +7,19 @@
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
     margin: 0;
     padding: 0;
     background-color: #291e3b;
-   
-    
+    font-family: sans-serif;
 }
 
 .container {
-   
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    
-
-   
-}
-
-.med_list {
     position: absolute;
+<<<<<<< HEAD
     left: 15%;
     margin-top: 100px;
     border-collapse: collapse;
@@ -37,43 +28,42 @@ body {
     top: 55%;
 
     
+=======
+    top: 5%;
+    left: 10%;
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    gap: 80px;
+    align-self: center;
+    justify-items: center;
+>>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
 }
 
-th,
-td {
+.med_list { 
+    max-width: max-content;
+}
+
+th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 2px;
     text-align: left;
     color: white;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   position: relative;
-   right: 11%;
-   overflow: auto;
-  
-
 }
 
 th {
     background-color: #131111;
-    
 }
-
 
 input {
-    width: 90%;
+    width: 95%;
+    height: 40%;
+    margin-right: 30px;
     border-radius: 4px;
-    margin-right: 10px;
-    padding: 7px;
-    margin-left: 10px;
     font-weight: 400;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-}
-
-label {
-    font-size: 25px;
-    margin: 3%;
+    margin: 10px 0;
 }
 
 input:focus {
@@ -82,7 +72,14 @@ input:focus {
     outline: none;
 }
 
+label {
+    color: #ddd;
+    font-size: 25px;
+    display: block;
+}
+
 .mlist {
+<<<<<<< HEAD
    
     position: absolute;
     left: 35%;
@@ -107,14 +104,35 @@ input:focus {
   backdrop-filter: blur(10px);
 
     
+=======
+    justify-self: center;
+    color: white;
+    font-size: 40px;
 }
 
-.med_add form{
+.ad {
+    justify-self: center;
+    color: white;
+    font-size: 30px;
+}
+
+.med_add {
+    width: 500px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.5);
+    height: 350px; 
+>>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
+}
+
+.med_add form {
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    
+    justify-content: center;
 }
 
+<<<<<<< HEAD
 .submit{
    
     background-color: #514cde;
@@ -123,10 +141,16 @@ input:focus {
     position: absolute;
     top: 89%;
     width: 95px;
+=======
+.submit {
+    background-color: #000000;
+    color: #ddd;
+>>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
+<<<<<<< HEAD
    padding: 10px;
     left: 40%;
     box-shadow: 0 0 5px blue;
@@ -174,3 +198,33 @@ h2
 }
   
    
+=======
+    width: 70px;
+    height: 40px;
+    justify-self: center;
+    grid-column: span 3;
+}
+
+.submit:hover {
+    background-color: #5a9bff;
+    color: #fff;
+}
+
+.success, .error {
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+>>>>>>> df9a9b0 (Designed The Medication page and Implemented New Sale Invoice feature Still Some Bugs To Fix)
