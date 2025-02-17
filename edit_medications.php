@@ -79,17 +79,24 @@ if (isset($_POST['delete'])) {
 <head>
     <title>Edit Medication</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Smooch+Sans:wght@100..900&display=swap');
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #291e3b;
             margin: 0;
             padding: 0;
         }
 
-        h2 {
+        h1 {
             text-align: center;
             color: #333;
             margin-top: 20px;
+            color: white;
+            font-family: "Smooch Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-size:50px;
+  font-style: normal;
         }
 
         form {
@@ -126,12 +133,17 @@ if (isset($_POST['delete'])) {
 
         button {
             display: inline-block;
-            padding: 10px 20px;
-            margin: 10px 5px;
+            padding: 15px 20px;
+            /* margin: 10px 5px; */
+           position: relative;
+           left: 32%;
+           margin: 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bolder;
+
         }
 
         button[name="update"] {
@@ -173,7 +185,8 @@ if (isset($_POST['delete'])) {
 
 <body>
 
-    <h2>Edit Medication</h2>
+    <!-- <h2>Edit Medication</h2> -->
+     <h1>Edit Medications</h1>
 
     <?php if (isset($success_message)): ?>
         <div class="success"><?php echo $success_message; ?></div>

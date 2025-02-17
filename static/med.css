@@ -26,6 +26,7 @@ body {
     gap: 80px;
     align-self: center;
     justify-items: center;
+   
 }
 
 .med_list { 
@@ -95,16 +96,18 @@ label {
 }
 
 .submit {
-    background-color: #000000;
-    color: #ddd;
+    background-color:white;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 30px;
-    width: 70px;
+    width: 100%;
     height: 40px;
     justify-self: center;
     grid-column: span 3;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .submit:hover {
