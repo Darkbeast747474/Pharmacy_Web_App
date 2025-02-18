@@ -24,7 +24,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// Fetch existing medications from the database
 $sql = "SELECT * FROM medications";
 $result = mysqli_query($con, $sql);
 $medications = array();
