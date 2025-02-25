@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("Location: login.php");
+}
 include 'Db_Config.php';
 
 // Fetch medicines for dropdown

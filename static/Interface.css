@@ -108,3 +108,54 @@ nav h1 {
     word-wrap: break-word;
     overflow: hidden;
 }
+/* .logout
+{
+    position: relative;
+    float: right;
+    z-index: 100;
+    top: 50px;
+} */
+.logout {
+    position: absolute;
+   bottom: 90px;
+    right: 50px;
+}
+
+.logout form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout button {
+    background: linear-gradient(135deg, #ff5733, #c70039); /* Gradient red shades */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+}
+
+.logout button i {
+    font-size: 18px;
+}
+
+.logout button:hover {
+    background: linear-gradient(135deg, #c70039, #900c3f); /* Darker red gradient */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.logout button:active {
+    transform: scale(0.95);
+}

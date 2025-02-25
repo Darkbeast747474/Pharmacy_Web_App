@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +17,7 @@
 </head>
 
 <body>
+
     <nav class="navbar">
         <h1><i class="fa-solid fa-stethoscope"></i>PMS</h1>
         <ul class="nav_list">
@@ -32,6 +40,13 @@
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-chart-simple"></i>StackReports</a></li>
                 <li><a href="#" onclick="load()"><i class="fa-solid fa-receipt"></i>SalesReports</a></li>
             </div>
+            <div class="logout">
+    <form action="logout.php" method="post">
+        <button type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </form>
+</div>
+
+
         </ul>
     </nav>
     <iframe class="contents" id="content" src="Dashboard.php" frameborder="0"></iframe>
