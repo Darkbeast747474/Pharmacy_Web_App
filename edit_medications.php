@@ -33,8 +33,7 @@ if (isset($_POST['update'])) {
     $unit_price = $_POST['unit_price'];
 
     // Update the medication data in the database
-    $sql = "UPDATE medications 
-            SET 
+    $sql = "UPDATE medications SET 
                 medication_id = '$medication_id',
                 name = '$medication_name', 
                 generic_name = '$generic_name', 
@@ -70,7 +69,6 @@ if (isset($_POST['delete'])) {
         exit();
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -78,135 +76,11 @@ if (isset($_POST['delete'])) {
 
 <head>
     <title>Edit Medication</title>
-    <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Smooch+Sans:wght@100..900&display=swap');
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #291e3b;
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-top: 20px;
-            color: white;
-            font-family: "Smooch Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-size:50px;
-  font-style: normal;
-
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-top: 20px;
-
-        }
-
-        form {
-            width: 60%;
-            margin: 20px auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form div {
-            margin-bottom: 15px;
-        }
-
-        label {
-            font-size: 14px;
-            font-weight: bold;
-            color: #555;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            display: inline-block;
-
-            padding: 15px 20px;
-            /* margin: 10px 5px; */
-           position: relative;
-           left: 32%;
-           margin: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bolder;
-
-
-            padding: 10px 20px;
-            margin: 10px 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-
-        }
-
-        button[name="update"] {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        button[name="delete"] {
-            background-color: #f44336;
-            color: white;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .success,
-        .error {
-            text-align: center;
-            margin: 20px auto;
-            padding: 10px;
-            width: 50%;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .success {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .error {
-            background-color: #f44336;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="static/edit_med.css">
 </head>
 
 <body>
 
-    <!-- <h2>Edit Medication</h2> -->
      <h1>Edit Medications</h1>
 
     <?php if (isset($success_message)): ?>

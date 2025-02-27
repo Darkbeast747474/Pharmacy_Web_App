@@ -1,7 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
 }
 include 'Db_Config.php';
@@ -39,7 +38,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Insufficient stock for this medication.";
     }
 }
-
+if (isset($_GET['generate_invoice'])) {
+    require('fpdf\fpdf.php');
+    $id = $_GET['generate_invoice']; // Get sale ID from URL
+    $sale = $con->query("SELECT s.id, m.name, s.quantity_sold, s.total_price, s.customer_name, s.date_sold, s.payment_method 
+                          FROM sales_records s 
+                          JOIN medications m ON s.medication_id = m.medication_id 
+                          WHERE s.id = $id")->fetch_assoc();
+    $pdf = new FPDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 16);
+    $pdf->Cell(40, 10, 'Pharmacy Invoice');
+    $pdf->Ln();
+    $pdf->SetFont('Arial', '', 12);
+    $pdf->Cell(40, 10, 'Customer: ' . $sale['customer_name']);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'Medicine: ' . $sale['name']);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'Quantity: ' . $sale['quantity_sold']);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'Total Price: ₹' . $sale['total_price']);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'Payment Method: ' . $sale['payment_method']);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, 'Date: ' . $sale['date_sold']);
+    $pdf->Output();
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,113 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Sales Management</title>
-    <style>
-
-         @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Smooch+Sans:wght@100..900&display=swap');
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-
-            background-color:#291e3b;
-
-            background-color: #f4f4f9;
-
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-
-        }
-
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 400px;
-        }
-
-        h1 {
-
-            
-            text-align: center;
-            color: #007bff;
-            font-family: "Smooch Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-size:50px;
-  font-style: normal;
-
-            text-align: center;
-            color: #007bff;
-
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        select,
-
-        input,
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input
-        {
-            width: 94%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-
-
-        button {
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            border: none;
-
-            font-family: "Smooch Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
- font-size: 25px;
-  font-style: normal;
-
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .message {
-            text-align: center;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .message.success {
-            color: green;
-        }
-
-        .message.error {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="static/invoice.css">
 </head>
 
 <body>
@@ -183,10 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="Card">Card</option>
                 <option value="UPI">UPI</option>
             </select><br>
-
-
-            <button type="submit">Add Sale</button>
-
             <button type="submit">Record Sale</button>
 
         </form>
@@ -194,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if (isset($success_message)) { ?>
             <p class="message success">
                 <?= $success_message ?>
+                <a href="?generate_invoice=<?= $con->insert_id ?>" style="color: #007bff;">Generate Invoice</a>
             </p>
         <?php } ?>
 

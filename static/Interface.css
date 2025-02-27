@@ -5,10 +5,7 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    /* Bold for emphasis */
     font-size: 20px;
-    /* Adjust size as needed */
-
 }
 
 body {
@@ -36,11 +33,9 @@ body {
     max-height: 100vh;
 }
 
-
 ul li {
     list-style-type: none;
 }
-
 
 ul li a {
     display: block;
@@ -88,13 +83,10 @@ nav h1 {
     background-color: #1a1a2e;
 }
 
-.navbar li a:focus {
-    
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-    background-color: rgba(0, 168, 204, 0.2);
-    padding: 8px 12px;
-    transition: all 0.3s ease-in-out;
+.active{
+    font-size: 17px;
+    color:#7878d6;
+    transition: all 0.2s ease-in-out;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -108,17 +100,10 @@ nav h1 {
     word-wrap: break-word;
     overflow: hidden;
 }
-/* .logout
-{
-    position: relative;
-    float: right;
-    z-index: 100;
-    top: 50px;
-} */
+
 .logout {
-    position: absolute;
-   bottom: 90px;
-    right: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .logout form {
@@ -128,7 +113,7 @@ nav h1 {
 }
 
 .logout button {
-    background: linear-gradient(135deg, #ff5733, #c70039); /* Gradient red shades */
+    background: linear-gradient(135deg, #ff5733, #c70039);
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -151,7 +136,7 @@ nav h1 {
 }
 
 .logout button:hover {
-    background: linear-gradient(135deg, #c70039, #900c3f); /* Darker red gradient */
+    background: linear-gradient(135deg, #c70039, #900c3f);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
 }
