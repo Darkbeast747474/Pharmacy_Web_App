@@ -34,19 +34,19 @@ h1 {
 
 hr {
   position: absolute;
-  top: 15%;
+  top: 16%;
   left: 45%;
   transform: translate(-50%, -50%);
   border: none;
   height: 2px;
   border-radius: 5px;
   background-color: #000;
-  width: 30%;
+  width: 40%;
 }
 
 .dashboard-container {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 45%;
   transform: translate(-50%, -50%);
   display: grid;
@@ -80,3 +80,7 @@ h5 {
   grid-column: span 3;
 }
 
+.dashboard-card p{
+  color: white;
+  font-size: 30px;
+}

@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("Location: login.php");
+}
 include "Db_Config.php";
 
 if (isset($_GET['id'])) {
@@ -34,7 +39,6 @@ if (isset($_POST['update'])) {
 
     // Update the medication data in the database
     $sql = "UPDATE medications SET 
-                medication_id = '$medication_id',
                 name = '$medication_name', 
                 generic_name = '$generic_name', 
                 dosage = '$dosage', 
@@ -43,7 +47,7 @@ if (isset($_POST['update'])) {
                 expiry_date = '$expiry_date', 
                 stock_quantity = '$stock_quantity', 
                 unit_price = '$unit_price' 
-            WHERE medication_id = $medication_id";
+            WHERE medication_id = '$medication_id'";
 
     if (mysqli_query($con, $sql)) {
         $success_message = "Medication updated successfully!";
@@ -58,7 +62,7 @@ if (isset($_POST['update'])) {
 
 if (isset($_POST['delete'])) {
     include "Db_Config.php";
-    $sql = "DELETE FROM medications WHERE medication_id = $medication_id";
+    $sql = "DELETE FROM medications WHERE medication_id = '$medication_id'";
     if (mysqli_query($con, $sql)) {
         $success_message = "Medication deleted successfully!";
         header("Location: manage_medications.php");
@@ -92,10 +96,6 @@ if (isset($_POST['delete'])) {
     <?php endif; ?>
 
     <form method="post" action="">
-        <div>
-            <label for="medication_id">Medication ID:</label>
-            <input type="number" name="medication_id" value="<?php echo $medication['medication_id']; ?>" required>
-        </div>
         <div>
             <label for="medication_name">Medication Name:</label>
             <input type="text" name="medication_name" value="<?php echo $medication['name']; ?>" required>

@@ -8,7 +8,11 @@ include 'Db_Config.php';
 // Fetch medicines for dropdown
 $medicines = $con->query("SELECT medication_id, name, unit_price, stock_quantity FROM medications");
 
+// Fetch staff members for dropdown
+$staff_members = $con->query("SELECT staff_id, name FROM staff");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $staff_id = $_POST['staff_id'];
     $medication_id = $_POST['medication_id'];
     $quantity = $_POST['quantity'];
     $customer_name = $_POST['customer_name'];
@@ -23,47 +27,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_stock_quantity = $medicine['stock_quantity'] - $quantity;
 
         // Insert into sales_records
-        $sql = "INSERT INTO sales_records (medication_id, quantity_sold, total_price, customer_name, payment_method) 
-                VALUES ('$medication_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
+        $sql = "INSERT INTO sales_records (medication_id, staff_id, quantity_sold, total_price, customer_name, payment_method) 
+                VALUES ('$medication_id', '$staff_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
 
         // Update stock quantity in medications table
         $update_stock_sql = "UPDATE medications SET stock_quantity = '$new_stock_quantity' WHERE medication_id = '$medication_id'";
 
-        if (mysqli_query($con, $sql) && mysqli_query($con, $update_stock_sql)) {
-            $success_message = "Sale recorded and stock updated successfully!";
+        // Update staff total sales
+        $update_staff_sales_sql = "UPDATE staff SET total_sales = total_sales + '$total_price' WHERE staff_id = '$staff_id'";
+
+        if (mysqli_query($con, $sql) && mysqli_query($con, $update_stock_sql) && mysqli_query($con, $update_staff_sales_sql)) {
+            $success_message = "Sale recorded, stock updated, and staff sales updated successfully!";
         } else {
-            $error_message = "Error while recording sale or updating stock.";
+            $error_message = "Error while recording sale, updating stock, or updating staff sales.";
         }
     } else {
         $error_message = "Insufficient stock for this medication.";
     }
 }
+
 if (isset($_GET['generate_invoice'])) {
-    require('fpdf\fpdf.php');
-    $id = $_GET['generate_invoice']; // Get sale ID from URL
-    $sale = $con->query("SELECT s.id, m.name, s.quantity_sold, s.total_price, s.customer_name, s.date_sold, s.payment_method 
-                          FROM sales_records s 
-                          JOIN medications m ON s.medication_id = m.medication_id 
-                          WHERE s.id = $id")->fetch_assoc();
-    $pdf = new FPDF();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 16);
-    $pdf->Cell(40, 10, 'Pharmacy Invoice');
-    $pdf->Ln();
-    $pdf->SetFont('Arial', '', 12);
-    $pdf->Cell(40, 10, 'Customer: ' . $sale['customer_name']);
-    $pdf->Ln();
-    $pdf->Cell(40, 10, 'Medicine: ' . $sale['name']);
-    $pdf->Ln();
-    $pdf->Cell(40, 10, 'Quantity: ' . $sale['quantity_sold']);
-    $pdf->Ln();
-    $pdf->Cell(40, 10, 'Total Price: ₹' . $sale['total_price']);
-    $pdf->Ln();
-    $pdf->Cell(40, 10, 'Payment Method: ' . $sale['payment_method']);
-    $pdf->Ln();
-    $pdf->Cell(40, 10, 'Date: ' . $sale['date_sold']);
-    $pdf->Output();
-    exit;
+    $id = $_GET['generate_invoice'];
+    header("Location: export_sales_invoice.php?generate_invoice=$id");
+    exit();
 }
 ?>
 
@@ -81,6 +67,15 @@ if (isset($_GET['generate_invoice'])) {
     <div class="container">
         <h1>Record Sale</h1>
         <form method="post">
+            <label>Staff:</label>
+            <select name="staff_id">
+                <?php while ($row = $staff_members->fetch_assoc()) { ?>
+                    <option value="<?= $row['staff_id'] ?>">
+                        <?= $row['name'] ?> (ID: <?= $row['staff_id'] ?>)
+                    </option>
+                <?php } ?>
+            </select><br>
+
             <label>Medicine:</label>
             <select name="medication_id">
                 <?php while ($row = $medicines->fetch_assoc()) { ?>

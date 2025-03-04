@@ -16,29 +16,33 @@ body {
     background-color: #291e3b;
     font-family: sans-serif;
 }
-h2{
+
+h2 {
     font-family: "Smooch Sans", serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 5rem;
-  position: relative;
-  top: 10px;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 5rem;
+    position: relative;
+    top: 10px;
 }
+
 .container {
     position: absolute;
     top: 8%;
     left: 10%;
     display: grid;
-    grid-template-rows: repeat(2,1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 80px;
     align-self: center;
     justify-items: center;
 }
 
-.med_list { 
+.med_list {
     max-width: max-content;
 }
-th, td {
+
+th,
+td {
     border: 1px solid #ddd;
     padding: 2px;
     text-align: left;
@@ -78,12 +82,14 @@ label {
     justify-self: center;
     color: white;
     font-size: 40px;
+    margin-bottom: 20px;
 }
 
 .ad {
     justify-self: center;
     color: white;
     font-size: 30px;
+    margin-bottom: 20px;
 }
 
 .med_add {
@@ -92,15 +98,16 @@ label {
     background-color: #e0e0e0;
     backdrop-filter: blur(10px);
     box-shadow: 0px 5px 6px rgb(255, 251, 251);
-    height: 450px; 
+    height: 450px;
 }
 
 .med_add form {
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-content: center; 
+    justify-content: center;
 }
+
 button.submit {
     width: 95%;
     background: linear-gradient(135deg, #007bff, #0056b3);
@@ -132,7 +139,8 @@ button.submit:active {
 }
 
 
-.success, .error {
+.success,
+.error {
     position: absolute;
     top: 70%;
     left: 60%;
@@ -149,6 +157,3 @@ button.submit:active {
 .error {
     background-color: #f44336;
 }
-
-
-

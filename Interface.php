@@ -26,16 +26,17 @@ if (!isset($_SESSION['username'])) {
             </div><br>
             <div>
                 <p>Medicine</p>
+                <li><a class="nav_elements"  href="#" onclick="load('add_medications.php',this)"><i class="fa-solid fa-pills"></i>Add Medicine</a></li>
                 <li><a class="nav_elements"  href="#" onclick="load('manage_medications.php',this)"><i class="fa-solid fa-pills"></i>Manage Medicine</a></li>
             </div><br>
             <div>
                 <p>Staff</p>
-                <li><a class="nav_elements"  href="#" onclick="load('',this)"><i class="fa-solid fa-user"></i>Add Staff</a></li>
-                <li><a class="nav_elements"  href="#" onclick="load('',this)"><i class="fa-solid fa-briefcase"></i>Manage Staff</a></li>
+                <li><a class="nav_elements"  href="#" onclick="load('add_staff.php',this)"><i class="fa-solid fa-user"></i>Add Staff</a></li>
+                <li><a class="nav_elements"  href="#" onclick="load('staff_list.php',this)"><i class="fa-solid fa-briefcase"></i>Manage Staff</a></li>
             </div><br>
             <div>
                 <p>Reports</p>
-                <li><a class="nav_elements"  href="#" onclick="load('',this)"><i class="fa-solid fa-chart-simple"></i>Stack Reports</a></li>
+                <li><a class="nav_elements"  href="#" onclick="load('stock_report.php',this)"><i class="fa-solid fa-chart-simple"></i>Stock Reports</a></li>
                 <li><a class="nav_elements"  href="#" onclick="load('sales_report.php',this)"><i class="fa-solid fa-receipt"></i>Sales Reports</a></li>
             </div>
             <div>

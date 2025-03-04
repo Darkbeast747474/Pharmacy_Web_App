@@ -1,11 +1,17 @@
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header("Location: login.php");
+}
+
 include 'Db_Config.php';
 
 $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-01'); // Default: First day of current month
 $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d'); // Default: Today's date
 
 // Fetch sales records grouped by date
-$sql = "SELECT date_sold, SUM(total_price) AS total_sales FROM sales_records 
+$sql = "SELECT staff_id,date_sold, SUM(total_price) AS total_sales FROM sales_records 
         WHERE date_sold BETWEEN '$start_date' AND '$end_date' 
         GROUP BY date_sold ORDER BY date_sold DESC";
 $result = $con->query($sql);
@@ -38,6 +44,7 @@ $result = $con->query($sql);
         <table>
             <tr>
                 <th>Date</th>
+                <th>Sale Recored By</th>
                 <th>Total Sales (₹)</th>
             </tr>
             <?php
@@ -47,10 +54,12 @@ $result = $con->query($sql);
             ?>
                 <tr>
                     <td><?= $row['date_sold'] ?></td>
+                    <td><?= $row['staff_id'] ?></td>
                     <td>₹<?= number_format($row['total_sales'], 2) ?></td>
                 </tr>
             <?php } ?>
             <tr>
+                <th></th>
                 <th>Total Sales (₹)</th>
                 <th>₹<?= number_format($grand_total, 2) ?></th>
             </tr>
