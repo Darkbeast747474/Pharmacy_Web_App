@@ -61,10 +61,9 @@ function redirect_to_edit($medication_id)
     <?php if (isset($error_message)): ?>
         <div class="error"><?php echo $error_message; ?></div>
     <?php endif; ?>
-
+    <h2 class="ad">Add New Medication</h2>
     <div class="container">
         <div class="med_add">
-            <h2 class="ad">Add New Medication</h2>
             <form method="post" action="">
                 <div>
                     <label for="medication_name">Medication ID:</label>
