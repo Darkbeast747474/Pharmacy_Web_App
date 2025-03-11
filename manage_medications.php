@@ -14,13 +14,6 @@ $medications = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $medications[] = $row;
 }
-function redirect_to_edit($medication_id)
-{
-    if (isset($_POST["edit"])) {
-        header("Location: edit_medications.php?id=$medication_id");
-        exit();
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +61,6 @@ function redirect_to_edit($medication_id)
                                         <input type="hidden" name="id" value="<?php echo $medication['medication_id']; ?>">
                                         <button type="submit">Edit</button>
                                     </form>
-
                                 </td>
                             </tr>
                         <?php endforeach; ?>

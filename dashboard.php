@@ -64,7 +64,7 @@ $total_sales = $total_sales_result->fetch_assoc()['total_sales'] ?? 0;
         </div>
         <div class="dashboard-card">
             <i class="fas fa-pills"></i>
-            <h5>Total Medicines</h5>
+            <h5>Total Types of Medicines</h5>
             <p><?= $medicines ?></p>
         </div>
         <div class="dashboard-card">

@@ -1,9 +1,11 @@
 <?php
+
 session_start();
 if(!isset($_SESSION['username']))
 {
     header("Location: login.php");
 }
+
 include "Db_Config.php";
 
 if (isset($_GET['id'])) {
@@ -27,7 +29,6 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['update'])) {
-    $medication_id = $_POST['medication_id'];
     $medication_name = $_POST['medication_name'];
     $generic_name = $_POST['generic_name'];
     $dosage = $_POST['dosage'];
@@ -46,8 +47,7 @@ if (isset($_POST['update'])) {
                 category = '$category', 
                 expiry_date = '$expiry_date', 
                 stock_quantity = '$stock_quantity', 
-                unit_price = '$unit_price' 
-            WHERE medication_id = '$medication_id'";
+                unit_price = '$unit_price' WHERE medication_id = '$medication_id' ";
 
     if (mysqli_query($con, $sql)) {
         $success_message = "Medication updated successfully!";
@@ -55,7 +55,7 @@ if (isset($_POST['update'])) {
         exit();
     } else {
         $error_message = "Error in update procedure";
-        header("Location: edit.php?id=$medication_id");
+        header("Location: edit_medications.php?id=$medication_id");
         exit();
     }
 }
@@ -69,7 +69,7 @@ if (isset($_POST['delete'])) {
         exit();
     } else {
         $error_message = "Error in delete procedure";
-        header("Location: edit.php?id=$medication_id");
+        header("Location: edit_medications.php?id=$medication_id");
         exit();
     }
 }

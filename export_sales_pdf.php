@@ -26,16 +26,16 @@ $pdf->Cell(190, 10, "From: $start_date To: $end_date", 0, 1, 'C');
 $pdf->Ln(10);
 
 // Table headers
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', 15);
 $pdf->Cell(50, 10, 'Date', 1);
-$pdf->Cell(60, 10, 'Total Sales (₹)', 1);
+$pdf->Cell(60, 10, 'Total Sales (Rs.)', 1);
 $pdf->Ln();
 
 $pdf->SetFont('Arial', '', 12);
 $grand_total = 0;
 while ($row = $result->fetch_assoc()) {
     $pdf->Cell(50, 10, $row['date_sold'], 1);
-    $pdf->Cell(60, 10, '₹' . number_format($row['total_sales'], 2), 1);
+    $pdf->Cell(60, 10, 'Rs.' . number_format($row['total_sales'], 2), 1);
     $pdf->Ln();
     $grand_total += $row['total_sales'];
 }
@@ -43,7 +43,7 @@ while ($row = $result->fetch_assoc()) {
 // Grand Total
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(50, 10, 'Total Sales', 1);
-$pdf->Cell(60, 10, '₹' . number_format($grand_total, 2), 1);
+$pdf->Cell(60, 10, 'Rs.' . number_format($grand_total, 2), 1);
 
 $pdf->Output();
 ?>
