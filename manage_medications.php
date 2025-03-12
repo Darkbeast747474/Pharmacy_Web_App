@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <td>
                                     <form action="edit_medications.php" method="get">
                                         <input type="hidden" name="id" value="<?php echo $medication['medication_id']; ?>">
-                                        <button type="submit">Edit</button>
+                                        <button class="edit" type="submit">Edit</button>
                                     </form>
                                 </td>
                             </tr>

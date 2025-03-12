@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Smooch+Sans:wght@100..900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
     font-family: "Smooch Sans", serif;
     font-optical-sizing: auto;
     font-weight: 500;
-    font-style: normal;
-    box-sizing: border-box;
 }
 
 body {
@@ -111,7 +107,7 @@ label {
     justify-content: center;
 }
 
-button.submit {
+.submit {
     width: 95%;
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
@@ -130,17 +126,20 @@ button.submit {
     bottom: -30px;
 }
 
-button.submit:hover {
+.submit:hover {
     background: linear-gradient(135deg, #0056b3, #003d7a);
     box-shadow: 0px 6px 10px rgba(0, 85, 204, 0.5);
     transform: translateY(-2px);
 }
 
-button.submit:active {
+.submit:active {
     transform: translateY(1px);
     box-shadow: 0px 2px 4px rgba(0, 85, 204, 0.3);
 }
 
+.edit{
+    color: #131111;
+}
 
 .success,
 .error {

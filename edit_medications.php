@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-if(!isset($_SESSION['username']))
-{
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
 }
 
@@ -59,20 +58,6 @@ if (isset($_POST['update'])) {
         exit();
     }
 }
-
-if (isset($_POST['delete'])) {
-    include "Db_Config.php";
-    $sql = "DELETE FROM medications WHERE medication_id = '$medication_id'";
-    if (mysqli_query($con, $sql)) {
-        $success_message = "Medication deleted successfully!";
-        header("Location: manage_medications.php");
-        exit();
-    } else {
-        $error_message = "Error in delete procedure";
-        header("Location: edit_medications.php?id=$medication_id");
-        exit();
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +70,7 @@ if (isset($_POST['delete'])) {
 
 <body>
 
-     <h1>Edit Medications</h1>
+    <h1>Edit Medications</h1>
 
     <?php if (isset($success_message)): ?>
         <div class="success"><?php echo $success_message; ?></div>
@@ -129,7 +114,6 @@ if (isset($_POST['delete'])) {
             <input type="text" name="unit_price" value="<?php echo $medication['unit_price']; ?>" required>
         </div>
         <button type="submit" name="update">Update Medication</button>
-        <button type="submit" name="delete">Delete Medication</button>
     </form>
 
 </body>

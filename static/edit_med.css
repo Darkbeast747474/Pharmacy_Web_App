@@ -3,7 +3,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
-
     margin: 0;
     padding: 0;
 }
@@ -60,32 +59,17 @@ input[type="number"] {
 }
 
 button {
-    display: inline-block;
+    margin-left: 10%;
     padding: 15px 20px;
-    position: relative;
-    left: 32%;
-    margin: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bolder;
-    padding: 10px 20px;
-    margin: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-
 }
 
 button[name="update"] {
     background-color: #4CAF50;
-    color: white;
-}
-
-button[name="delete"] {
-    background-color: #f44336;
     color: white;
 }
 
@@ -112,5 +96,4 @@ button:hover {
 .error {
     background-color: #f44336;
     color: white;
-
 }
