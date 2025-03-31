@@ -2,10 +2,11 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     width: 100%;
+    background-color: #291e3b;
 }
 
 h1 {
-    color: #333;
+    color: #f4f4f4;
 }
 
 .section-title {
@@ -24,9 +25,9 @@ h1 {
 }
 
 .container {
-    width: 80%;
+    width: 100vw;
     position: absolute;
-    top: 70%;
+    margin-top: 108%;
     left: 46%;
     transform: translate(-50%, -50%);
 }
@@ -42,10 +43,12 @@ td {
     padding: 10px;
     text-align: center;
     border: 1px solid #ccc;
+    background-color: #eaeaea;
 }
 
 th {
-    background-color: #eaeaea;
+    background-color: #291e3b;
+    color: #ddd;
 }
 
 .expiring {
