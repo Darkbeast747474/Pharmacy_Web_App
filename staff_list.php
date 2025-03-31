@@ -17,6 +17,7 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color:#291e3b ;
         }
 
         .container {
@@ -25,6 +26,7 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
             margin-top: 50px;
             align-self: center;
             justify-items: center;
+            color: #ddd;
         }
 
         table {
@@ -41,7 +43,7 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
         }
 
         th {
-            background-color: #007bff;
+            background-color:rgb(61, 61, 62);
             color: white;
         }
     </style>

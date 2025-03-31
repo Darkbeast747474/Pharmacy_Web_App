@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #291e3b;
             text-align: center;
         }
 
@@ -43,10 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-top: 50px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            height: 550px;
+            position: relative;
+            right: 60px;
+            box-shadow: 0px 2px 3px white;
         }
 
         h1 {
-            color: #007bff;
+            color:rgb(60, 61, 61);
         }
 
         input,
@@ -54,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         button {
             width: 80%;
             padding: 10px;
-            margin-top: 10px;
+            margin-top: 40px;
+            
         }
 
         button {
@@ -62,6 +67,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: white;
             cursor: pointer;
         }
+        input{
+            padding: 15px;
+        }
+        .submit {
+    width: 70%;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
+    letter-spacing: 1px;
+    position: relative;
+    left: -1%;
+    bottom: 10px;
+}
+
+.submit:hover {
+    background: linear-gradient(135deg, #0056b3, #003d7a);
+    box-shadow: 0px 6px 10px rgba(0, 85, 204, 0.5);
+    transform: translateY(-2px);
+}
+
+.submit:active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 4px rgba(0, 85, 204, 0.3);
+}
+        
     </style>
 </head>
 
@@ -73,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="phone" placeholder="Phone Number" required>
-            <button type="submit">Add Staff</button>
+            <button type="submit" class="submit">Add Staff</button>
         </form>
 
         <?php if (isset($success_message)) echo "<p style='color:green;'>$success_message</p>"; ?>
