@@ -113,7 +113,9 @@ if (isset($_POST['update'])) {
             <label for="unit_price">Unit Price:</label>
             <input type="text" name="unit_price" value="<?php echo $medication['unit_price']; ?>" required>
         </div>
-        <button type="submit" name="update">Update Medication</button>
+        <button type="submit" name="update" class="submit">Update Medication</button>
+
+
     </form>
 
 </body>
