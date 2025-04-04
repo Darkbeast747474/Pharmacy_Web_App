@@ -29,8 +29,7 @@ h2 {
 }
 
 .container {
-    position:relative;
-    top: -5%;
+   width: 80%;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     align-self: center;
@@ -38,14 +37,11 @@ h2 {
    
 }
 
-.med_list {
-    max-width: max-content;
-}
 
 th,
 td {
     border: 2px solid #ddd;
-    padding: 6px;
+    padding: 3px;
     text-align: left;
     color: white;
     font-weight: bold;
@@ -55,9 +51,41 @@ td {
 th {
     background-color: #444444;
 }
-table
+
+.med_list
 {
+    border-collapse: collapse;
+    width:60%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.submit {
+    width: fit-content;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 2px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
+    letter-spacing: 1px;
     position: relative;
-   top: -5%;
-    left: -60px;
+    bottom: -2px;
+    margin-left: 25%;
+}
+
+.submit:hover {
+    background: linear-gradient(135deg, #0056b3, #003d7a);
+    box-shadow: 0px 6px 10px rgba(0, 85, 204, 0.5);
+    transform: translateY(-2px);
+}
+
+.submit:active {
+    transform: translateY(1px);
+    box-shadow: 0px 2px 4px rgba(0, 85, 204, 0.3);
 }
