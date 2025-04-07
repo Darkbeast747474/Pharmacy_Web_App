@@ -51,42 +51,60 @@ $total_sales = $total_sales_result->fetch_assoc()['total_sales'] ?? 0;
 <body>
     <h1>Admin Dashboard</h1>
     <hr>
-    <div class="dashboard-container">
-        <div class="dashboard-card">
-            <i class="fas fa-user-md"></i>
-            <h5>Total Staff</h5>
-            <p><?= $staff ?></p>
-        </div>
-        <div class="dashboard-card">
-            <i class="fas fa-hospital"></i>
-            <h5>Total Manufacturing Companies</h5>
-            <p><?= $companies ?></p>
-        </div>
-        <div class="dashboard-card">
-            <i class="fas fa-pills"></i>
-            <h5>Total Types of Medicines</h5>
-            <p><?= $medicines ?></p>
-        </div>
-        <div class="dashboard-card">
-            <i class="fas fa-rupee-sign"></i>
-            <h5>Today's Sale</h5>
-            <p>₹<?= number_format($todays_sales, 2) ?></p>
-        </div>
-        <div class="dashboard-card">
-            <i class="fas fa-chart-line"></i>
-            <h5>Yesterday's Sale</h5>
-            <p>₹<?= number_format($yesterdays_sales, 2) ?></p>
-        </div>
-        <div class="dashboard-card">
-            <i class="fas fa-wallet"></i>
-            <h5>Last 7 Days Sale</h5>
-            <p>₹<?= number_format($last_seven_days_sales, 2) ?></p>
-        </div>
-        <div class="dashboard-card full-width">
-            <i class="fas fa-dollar-sign"></i>
-            <h2>Total Sale: ₹<?= number_format($total_sales, 2) ?></h2>
-        </div>
+<div class="dashboard-container">
+<a href="staff_list.php">
+    <div class="dashboard-card">
+        <i class="fas fa-user-md"></i>
+        <h5>Total Staff</h5>
+        <p><?= $staff ?></p>
     </div>
-</body>
+</a>
 
+<a href="stock_report.php">
+    <div class="dashboard-card">
+        <i class="fas fa-hospital"></i>
+        <h5>Total Manufacturing Companies</h5>
+        <p><?= $companies ?></p>
+    </div>
+</a>
+
+<a href="stock_report.php">
+    <div class="dashboard-card">
+        <i class="fas fa-pills"></i>
+        <h5>Total Types of Medicines</h5>
+        <p><?= $medicines ?></p>
+    </div>
+</a>
+
+<a href="sales_report.php">
+    <div class="dashboard-card">
+        <i class="fas fa-rupee-sign"></i>
+        <h5>Today's Sale</h5>
+        <p>₹<?= number_format($todays_sales, 2) ?></p>
+    </div>
+</a>
+
+<a href="sales_report.php">
+    <div class="dashboard-card">
+        <i class="fas fa-chart-line"></i>
+        <h5>Yesterday's Sale</h5>
+        <p>₹<?= number_format($yesterdays_sales, 2) ?></p>
+    </div>
+</a>
+
+<a href="sales_report.php">
+    <div class="dashboard-card">
+        <i class="fas fa-wallet"></i>
+        <h5>Last 7 Days Sale</h5>
+        <p>₹<?= number_format($last_seven_days_sales, 2) ?></p>
+    </div>
+</a>
+
+    <div class="dashboard-card full-width">
+        <i class="fas fa-dollar-sign"></i>
+        <h2>Total Sale: ₹<?= number_format($total_sales, 2) ?></h2>
+    </div>
+
+</div>
+</body>
 </html>
