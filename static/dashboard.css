@@ -84,3 +84,8 @@ h5 {
   color: white;
   font-size: 30px;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+}

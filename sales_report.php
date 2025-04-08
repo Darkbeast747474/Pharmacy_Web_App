@@ -37,8 +37,7 @@ $result = $con->query($sql);
 
             <label for="end_date">End Date:</label>
             <input type="date" name="end_date" value="<?= $end_date ?>" required>
-
-            <button type="submit" class="submit">Filter</button>
+            <button type="submit" class="submit btn">Filter</button>
         </form>
 
         <table>
@@ -69,7 +68,7 @@ $result = $con->query($sql);
         <form action="export_sales_pdf.php" method="GET">
             <input type="hidden" name="start_date" value="<?= $start_date ?>">
             <input type="hidden" name="end_date" value="<?= $end_date ?>">
-            <button type="submit" class="submit">Download PDF</button>
+            <button type="submit" class="submit ">Download PDF</button>
         </form>
     </div>
 
