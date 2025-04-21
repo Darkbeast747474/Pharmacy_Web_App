@@ -1,13 +1,15 @@
 <?php 
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
+    exit();
 }
+
+$admin_id = $_SESSION['admin_id'];
 
 include "Db_Config.php";
 
 if (isset($_POST['submit'])) {
-    $medication_id = $_POST['medication_id'];
     $medication_name = $_POST['medication_name'];
     $generic_name = $_POST['generic_name'];
     $dosage = $_POST['dosage'];
@@ -17,8 +19,8 @@ if (isset($_POST['submit'])) {
     $stock_quantity = $_POST['stock_quantity'];
     $unit_price = $_POST['unit_price'];
 
-    $sql = "INSERT INTO medications (medication_id,name, generic_name, dosage, manufacturer, category, expiry_date, stock_quantity, unit_price) 
-            VALUES ($medication_id,'$medication_name', '$generic_name', '$dosage', '$manufacturer', '$category', '$expiry_date', '$stock_quantity', '$unit_price')";
+    $sql = "INSERT INTO medications (admin_id,name, generic_name, dosage, manufacturer, category, expiry_date, stock_quantity, unit_price) 
+            VALUES ($admin_id,'$medication_name', '$generic_name', '$dosage', '$manufacturer', '$category', '$expiry_date', '$stock_quantity', '$unit_price')";
 
     if (mysqli_query($con, $sql)) {
         $success_message = "Medication added successfully!";
@@ -44,48 +46,46 @@ if (isset($_POST['submit'])) {
         <div class="error"><?php echo $error_message; ?></div>
     <?php endif; ?>
     <h2 class="ad">Add New Medication</h2>
-    <div class="container">
-        <div class="med_add">
-            <form method="post" action="">
-                <div>
-                    <label for="medication_name">Medication ID:</label>
-                    <input type="number" name="medication_id" required>
-                </div>
-                <div>
-                    <label for="medication_name">Medication Name:</label>
-                    <input type="text" name="medication_name" required>
-                </div>
-                <div id="m">
-                    <label for="generic_name">Generic Name:</label>
-                    <input type="text" name="generic_name">
-                </div>
-                <div>
-                    <label for="dosage">Dosage:</label>
-                    <input type="text" name="dosage">
-                </div>
-                <div>
-                    <label for="manufacturer">Manufacturer:</label>
-                    <input type="text" name="manufacturer">
-                </div>
-                <div>
-                    <label for="category">Category:</label>
-                    <input type="text" name="category">
-                </div>
-                <div>
-                    <label for="expiry_date">Expiry Date:</label>
-                    <input type="date" name="expiry_date" required>
-                </div>
-                <div>
-                    <label for="stock_quantity">Stock Quantity:</label>
-                    <input type="number" name="stock_quantity" required>
-                </div>
-                <div>
-                    <label for="unit_price">Unit Price:</label>
-                    <input type="number" name="unit_price" required>
-                </div>
+<div class="container">
+    <div class="med_add">
+        <form method="post" action="">
+            <div>
+                <label for="medication_name">Medication Name:</label>
+                <input type="text" name="medication_name" required>
+            </div>
+            <div>
+                <label for="generic_name">Generic Name:</label>
+                <input type="text" name="generic_name">
+            </div>
+            <div>
+                <label for="dosage">Dosage:</label>
+                <input type="text" name="dosage">
+            </div>
+            <div>
+                <label for="manufacturer">Manufacturer:</label>
+                <input type="text" name="manufacturer">
+            </div>
+            <div>
+                <label for="category">Category:</label>
+                <input type="text" name="category">
+            </div>
+            <div>
+                <label for="expiry_date">Expiry Date:</label>
+                <input type="date" name="expiry_date" required>
+            </div>
+            <div>
+                <label for="stock_quantity">Stock Quantity:</label>
+                <input type="number" name="stock_quantity" required>
+            </div>
+            <div>
+                <label for="unit_price">Unit Price:</label>
+                <input type="number" name="unit_price" required>
+            </div>
+            <div class="form-submit-wrapper">
                 <button class="submit" type="submit" name="submit">Add Medication</button>
-            </form>
-        </div>
-    </div>    
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

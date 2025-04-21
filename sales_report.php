@@ -1,9 +1,11 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
+    exit();
 }
+
+$admin_id = $_SESSION['admin_id'];
 
 include 'Db_Config.php';
 
@@ -12,7 +14,7 @@ $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d'); // Def
 
 // Fetch sales records grouped by date
 $sql = "SELECT staff_id,date_sold, SUM(total_price) AS total_sales FROM sales_records 
-        WHERE date_sold BETWEEN '$start_date' AND '$end_date' 
+        WHERE date_sold BETWEEN '$start_date' AND '$end_date' AND admin_id = '$admin_id' 
         GROUP BY date_sold ORDER BY date_sold DESC";
 $result = $con->query($sql);
 ?>

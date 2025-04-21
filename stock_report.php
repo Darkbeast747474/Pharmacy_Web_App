@@ -1,16 +1,18 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
+
+$admin_id = $_SESSION['admin_id'];
 
 include 'Db_Config.php';
 
 // Fetch all medicines
 $medications_result = $con->query("
     SELECT name, category, stock_quantity, expiry_date
-    FROM medications
+    FROM medications WHERE admin_id = '$admin_id'
 ");
 
 $low_stock_threshold = 10;

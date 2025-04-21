@@ -1,12 +1,14 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
 
+$admin_id = $_SESSION['admin_id'];
+
 include 'Db_Config.php';
-$staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
+$staff = $con->query("SELECT * FROM staff Where admin_id = '$admin_id'");
 ?>
 
 <!DOCTYPE html>

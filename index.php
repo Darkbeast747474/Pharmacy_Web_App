@@ -16,28 +16,37 @@
   </video>
 
   <div class="container">
-    <h1><i class="fa-solid fa-stethoscope"></i> <a href="index.php">PMS</a></h1>
-
     <div class="Login_card">
-      <p>Pharmacy Management System Manages your inventory, sales, and reports with ease.</p>
-      <p>Efficient. Secure. User-Friendly.</p><br>
-      <a href="login.php" class="login_A">Login as Admin</a>
+      <h1><i class="fa-solid fa-stethoscope"></i> <a href="index.php">PMS</a></h1>
+      <a href="login.php" class="login_A">Admin Login</a>
     </div>
-
-    <footer>
-      <div class="footer-content">
-        <p>Created by <a href="https://github.com/Darkbeast747474">Deepak</a> & <a href="https://github.com/AmitSingh511">Amit</a>.</p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/amitsandhu_pb07" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.instagram.com/deepakKaushal7744" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </footer>
   </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>©2025 PHARMACY MANAGEMENT SYSTEM</p> BY <br>
+      <div class="social-icons">
+        <span>DEEPAK 
+        <a href="https://www.instagram.com/deepakKaushal7744" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Darkbeast747474" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        </span>
+        &nbsp;&nbsp;&nbsp;
+        <span>AMIT 
+        <a href="https://www.instagram.com/amitsandhu_pb07" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/AmitSingh511" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
 </body>
 
 </html>

@@ -82,25 +82,38 @@ ul li {
 }
 
 ul li a i {
+    color: #00a8cc;
     text-align: center;
     width: 30px;
 }
 
-nav h1 {
+.navbar h1 {
     position: relative;
     display: flex;
     justify-content: center;
     margin: 20px;
-    font-size: 30px;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.navbar h1 i {
+    width: 30px;
     color: #00a8cc;
 }
 
-.active {
+
+.nav_elements.active {
     font-size: 17px;
     color: #7878d6;
     transition: all 0.2s ease-in-out;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: bold;
+}
+
+.nav_elements.active i {
+    color: #7878d6;
+    transition: all 0.2s ease-in-out;
 }
 
 
@@ -137,6 +150,9 @@ nav h1 {
     transform: scale(1.2);
 }
 
+.navbar.collapsed .nav_elements.active i{
+    color: #7878d6;
+}
 
 .navbar.collapsed p,
 .navbar.collapsed h1 {

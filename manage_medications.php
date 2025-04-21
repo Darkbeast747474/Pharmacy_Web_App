@@ -1,13 +1,14 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
+    exit();
 }
 
 include "Db_Config.php";
-
-$sql = "SELECT * FROM medications";
+$admin_id = $_SESSION['admin_id'];
+$sql = "SELECT * FROM medications Where admin_id = '$admin_id'";
 $result = mysqli_query($con, $sql);
 $medications = array();
 
@@ -66,11 +67,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="9">No medications found.</td>
+                            <td colspan="10">No medications found.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
+            <br><br>
         </div>
     </div>
 

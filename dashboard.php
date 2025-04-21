@@ -1,39 +1,42 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
 
 include 'Db_Config.php';
 
-// Fetch total staff count
-$staff_result = $con->query("SELECT COUNT(*) AS total_staff FROM staff");
+$admin_id = $_SESSION['admin_id'];
+
+// Fetch total staff count assigned to this admin
+$staff_result = $con->query("SELECT COUNT(*) AS total_staff FROM staff WHERE admin_id = '$admin_id'");
 $staff = $staff_result->fetch_assoc()['total_staff'];
 
-// Fetch total manufacturing companies
-$companies_result = $con->query("SELECT COUNT(DISTINCT  manufacturer) AS total_companies FROM medications");
+// Fetch total manufacturing companies linked to this admin’s medicines
+$companies_result = $con->query("SELECT COUNT(DISTINCT manufacturer) AS total_companies FROM medications WHERE admin_id = '$admin_id'");
 $companies = $companies_result->fetch_assoc()['total_companies'];
 
 // Fetch total medicines count
-$medicines_result = $con->query("SELECT COUNT(*) AS total_medicines FROM medications");
+$medicines_result = $con->query("SELECT COUNT(*) AS total_medicines FROM medications WHERE admin_id = '$admin_id'");
 $medicines = $medicines_result->fetch_assoc()['total_medicines'];
 
 // Fetch today's sales
-$todays_sales_result = $con->query("SELECT SUM(total_price) AS todays_sales FROM sales_records WHERE DATE(date_sold) = CURDATE()");
+$todays_sales_result = $con->query("SELECT SUM(total_price) AS todays_sales FROM sales_records WHERE admin_id = '$admin_id' AND DATE(date_sold) = CURDATE()");
 $todays_sales = $todays_sales_result->fetch_assoc()['todays_sales'] ?? 0;
 
 // Fetch yesterday's sales
-$yesterdays_sales_result = $con->query("SELECT SUM(total_price) AS yesterdays_sales FROM sales_records WHERE DATE(date_sold) = CURDATE() - INTERVAL 1 DAY");
+$yesterdays_sales_result = $con->query("SELECT SUM(total_price) AS yesterdays_sales FROM sales_records WHERE admin_id = '$admin_id' AND DATE(date_sold) = CURDATE() - INTERVAL 1 DAY");
 $yesterdays_sales = $yesterdays_sales_result->fetch_assoc()['yesterdays_sales'] ?? 0;
 
 // Fetch last 7 days' sales
-$last_seven_days_sales_result = $con->query("SELECT SUM(total_price) AS last_seven_days_sales FROM sales_records WHERE date_sold >= CURDATE() - INTERVAL 7 DAY");
+$last_seven_days_sales_result = $con->query("SELECT SUM(total_price) AS last_seven_days_sales FROM sales_records WHERE admin_id = '$admin_id' AND date_sold >= CURDATE() - INTERVAL 7 DAY");
 $last_seven_days_sales = $last_seven_days_sales_result->fetch_assoc()['last_seven_days_sales'] ?? 0;
 
 // Fetch total sales revenue
-$total_sales_result = $con->query("SELECT SUM(total_price) AS total_sales FROM sales_records");
+$total_sales_result = $con->query("SELECT SUM(total_price) AS total_sales FROM sales_records WHERE admin_id = '$admin_id'");
 $total_sales = $total_sales_result->fetch_assoc()['total_sales'] ?? 0;
+
 ?>
 
 <!DOCTYPE html>

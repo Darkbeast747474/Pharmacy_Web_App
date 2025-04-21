@@ -1,9 +1,11 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
+    exit();
 }
+
+$admin_id = $_SESSION['admin_id'];
 include 'Db_Config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -11,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $sql = "INSERT INTO staff (staff_id, name, email, phone ) 
-            VALUES ('$staff_id', '$name', '$email', '$phone')";
+    $sql = "INSERT INTO staff (admin_id,staff_id, name, email, phone ) 
+            VALUES ('$admin_id','$staff_id', '$name', '$email', '$phone')";
 
     if ($con->query($sql) === TRUE) {
         $success_message = "Staff member added successfully!";
@@ -35,6 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-align: center;
         }
 
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
         .container {
             width: 400px;
             margin: auto;
@@ -45,12 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             height: 550px;
             position: relative;
-            right: 60px;
+            right: 70px;
             box-shadow: 0px 2px 3px white;
         }
 
         h1 {
-            color:rgb(60, 61, 61);
+            color: rgb(60, 61, 61);
         }
 
         input,
@@ -59,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 80%;
             padding: 10px;
             margin-top: 40px;
-            
+
         }
 
         button {
@@ -67,39 +73,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: white;
             cursor: pointer;
         }
-        input{
+
+        input {
             padding: 15px;
         }
+
         .submit {
-    width: 70%;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
-    letter-spacing: 1px;
-    position: relative;
-    left: -1%;
-    bottom: 10px;
-}
+            width: 70%;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
+            letter-spacing: 1px;
+            position: relative;
+            left: -1%;
+            bottom: 10px;
+        }
 
-.submit:hover {
-    background: linear-gradient(135deg, #0056b3, #003d7a);
-    box-shadow: 0px 6px 10px rgba(0, 85, 204, 0.5);
-    transform: translateY(-2px);
-}
+        .submit:hover {
+            background: linear-gradient(135deg, #0056b3, #003d7a);
+            box-shadow: 0px 6px 10px rgba(0, 85, 204, 0.5);
+            transform: translateY(-2px);
+        }
 
-.submit:active {
-    transform: translateY(1px);
-    box-shadow: 0px 2px 4px rgba(0, 85, 204, 0.3);
-}
-        
+        .submit:active {
+            transform: translateY(1px);
+            box-shadow: 0px 2px 4px rgba(0, 85, 204, 0.3);
+        }
     </style>
 </head>
 

@@ -66,6 +66,7 @@ if ($_REQUEST) {
     if ($result->num_rows > 0) {
         session_start();
         $_SESSION['username'] = $un;
+        $_SESSION['admin_id'] = $result->fetch_assoc()['admin_id'];
         header("Location: Interface.php");
         exit();
     } else {

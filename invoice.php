@@ -1,15 +1,17 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['admin_id'])) {
     header("Location: login.php");
+    exit();
 }
+$admin_id = $_SESSION['admin_id'];
 include 'Db_Config.php';
 
 // Fetch medicines for dropdown
-$medicines = $con->query("SELECT medication_id, name, unit_price, stock_quantity FROM medications");
+$medicines = $con->query("SELECT medication_id, name, unit_price, stock_quantity FROM medications WHERE admin_id = '$admin_id'");
 
 // Fetch staff members for dropdown
-$staff_members = $con->query("SELECT staff_id, name FROM staff");
+$staff_members = $con->query("SELECT staff_id, name FROM staff WHERE admin_id = '$admin_id'");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $staff_id = $_POST['staff_id'];
@@ -27,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_stock_quantity = $medicine['stock_quantity'] - $quantity;
 
         // Insert into sales_records
-        $sql = "INSERT INTO sales_records (medication_id, staff_id, quantity_sold, total_price, customer_name, payment_method) 
-                VALUES ('$medication_id', '$staff_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
+        $sql = "INSERT INTO sales_records (admin_id,medication_id, staff_id, quantity_sold, total_price, customer_name, payment_method) 
+                VALUES ('$admin_id','$medication_id', '$staff_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
 
         if (mysqli_query($con, $sql)) {
             $sale_id = mysqli_insert_id($con); // ✅ capture ID before next queries
