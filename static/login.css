@@ -37,13 +37,12 @@ body {
 
 .box {
     width: 420px;
-    height: 300px;
+    height: 320px;
     color: #fff;
     border-radius: 10px;
     padding: 40px 30px;
     backdrop-filter: blur(15px);
     box-shadow: 0px 0px 5px black;
-
 }
 
 .box h1 {
@@ -95,7 +94,6 @@ body {
     left: 35%;
     width: 30%;
     height: 45px;
-
     background-color: #1e71cf;
     border: none;
     outline: none;
@@ -116,7 +114,6 @@ body {
     top: 10px;
     color: white;
     font-size: 60px;
-
     font-size: 36px;
     text-align: center;
     font-family: "Montserrat", serif;

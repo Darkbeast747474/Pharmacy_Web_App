@@ -50,7 +50,7 @@ $total_sales = $total_sales_result->fetch_assoc()['total_sales'] ?? 0;
 
 <body>
     <h1>Admin Dashboard</h1>
-    <hr>
+    <h2 class="user_welcome">Welcome, <?php echo $_SESSION['username']; ?></h2>
 <div class="dashboard-container">
 <a href="staff_list.php">
     <div class="dashboard-card">

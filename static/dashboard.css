@@ -28,13 +28,10 @@ h1 {
   margin-bottom: 10px;
 }
 
-hr {
-  width: 40%;
-  height: 2px;
-  background-color: #000;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 30px;
+.user_welcome{
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .dashboard-container {

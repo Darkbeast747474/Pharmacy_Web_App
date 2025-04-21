@@ -60,12 +60,10 @@ h1 a{
   text-align: center;
   padding: 30px;
   border-radius: 10px;
-  background-color: rgba(0, 49, 109, 0.285);
   margin: auto;
   width: 500px;
   color: #fff;
   font-size: 20px;
-  backdrop-filter: blur(10px);
 }
 
 .Login_card p {
