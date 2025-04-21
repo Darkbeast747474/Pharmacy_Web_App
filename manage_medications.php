@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div class="container">
         <div class="med_list">
             <h2 class="mlist">Medication List</h2>
-            <table>
+            <table class="medications-table">
                 <thead>
                     <tr>
                         <th>Medication ID</th>

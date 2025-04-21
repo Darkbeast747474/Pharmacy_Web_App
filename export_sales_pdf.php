@@ -1,49 +1,147 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
+    exit();
 }
-require('fpdf/fpdf.php');
+
 include 'Db_Config.php';
 
-$start_date = $_GET['start_date'];
-$end_date = $_GET['end_date'];
+$start_date = $_GET['start_date'] ?? '';
+$end_date = $_GET['end_date'] ?? '';
 
-// Fetch sales data
-$sql = "SELECT date_sold, SUM(total_price) AS total_sales FROM sales_records 
-        WHERE date_sold BETWEEN '$start_date' AND '$end_date' 
-        GROUP BY date_sold ORDER BY date_sold DESC";
-$result = $con->query($sql);
-
-// Create PDF
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(190, 10, 'Sales Report', 0, 1, 'C');
-$pdf->SetFont('Arial', '', 12);
-$pdf->Cell(190, 10, "From: $start_date To: $end_date", 0, 1, 'C');
-$pdf->Ln(10);
-
-// Table headers
-$pdf->SetFont('Arial', 'B', 15);
-$pdf->Cell(50, 10, 'Date', 1);
-$pdf->Cell(60, 10, 'Total Sales (Rs.)', 1);
-$pdf->Ln();
-
-$pdf->SetFont('Arial', '', 12);
-$grand_total = 0;
-while ($row = $result->fetch_assoc()) {
-    $pdf->Cell(50, 10, $row['date_sold'], 1);
-    $pdf->Cell(60, 10, 'Rs.' . number_format($row['total_sales'], 2), 1);
-    $pdf->Ln();
-    $grand_total += $row['total_sales'];
+// Validate inputs
+if (!$start_date || !$end_date) {
+    die("Start date and end date are required.");
 }
 
-// Grand Total
-$pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(50, 10, 'Total Sales', 1);
-$pdf->Cell(60, 10, 'Rs.' . number_format($grand_total, 2), 1);
+// Fetch sales data
+$sql = "SELECT date_sold, SUM(total_price) AS total_sales 
+        FROM sales_records 
+        WHERE date_sold BETWEEN '$start_date' AND '$end_date' 
+        GROUP BY date_sold 
+        ORDER BY date_sold DESC";
 
-$pdf->Output();
+$result = $con->query($sql);
+
+$rows = [];
+$grand_total = 0;
+while ($row = $result->fetch_assoc()) {
+    $rows[] = $row;
+    $grand_total += $row['total_sales'];
+}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        .report-container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #1e71cf;
+        }
+
+        .date-range {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #1e71cf;
+            color: white;
+        }
+
+        tfoot td {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #1e71cf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .print-btn:hover {
+            background-color: #4991e5;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+    <h2>Sales Report</h2>
+    <div class="date-range">From: <?php echo $start_date; ?> To: <?php echo $end_date; ?></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Total Sales (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($rows as $row): ?>
+                <tr>
+                    <td><?php echo $row['date_sold']; ?></td>
+                    <td>₹<?php echo number_format($row['total_sales'], 2); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total Sales</td>
+                <td>₹<?php echo number_format($grand_total, 2); ?></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button onclick="window.print()" class="print-btn">Print Report</button>
+</div>
+
+</body>
+</html>

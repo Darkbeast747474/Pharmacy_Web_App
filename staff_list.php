@@ -1,9 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
+if(!isset($_SESSION['username'])) {
     header("Location: login.php");
+    exit();
 }
+
 include 'Db_Config.php';
 $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
 ?>
@@ -17,15 +18,13 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color:#291e3b ;
+            background-color: #291e3b;
         }
 
         .container {
             width: 800px;
             margin: auto;
             margin-top: 50px;
-            align-self: center;
-            justify-items: center;
             color: #ddd;
         }
 
@@ -35,16 +34,27 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
             margin-top: 20px;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
 
         th {
-            background-color:rgb(61, 61, 62);
+            background-color: rgb(61, 61, 62);
             color: white;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .delete-btn:hover {
+            background-color: darkred;
         }
     </style>
 </head>
@@ -60,6 +70,7 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
                 <th>Phone</th>
                 <th>Date Joined</th>
                 <th>Total Sales</th>
+                <th>Action</th>
             </tr>
             <?php while ($row = $staff->fetch_assoc()) { ?>
                 <tr>
@@ -69,10 +80,15 @@ $staff = $con->query("SELECT * FROM staff ORDER BY date_joined DESC");
                     <td><?= $row['phone'] ?></td>
                     <td><?= $row['date_joined'] ?></td>
                     <td><?= $row['total_sales'] ?></td>
+                    <td>
+                        <form method="POST" action="delete_staff.php" onsubmit="return confirm('Are you sure you want to delete this staff member?');">
+                            <input type="hidden" name="staff_id" value="<?= $row['staff_id'] ?>">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             <?php } ?>
         </table>
     </div>
 </body>
-
 </html>

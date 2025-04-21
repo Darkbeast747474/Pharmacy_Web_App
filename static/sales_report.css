@@ -42,7 +42,7 @@ form {
 }
 
 button {
-    width: 30%;
+    width: 40%;
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border: none;
@@ -61,7 +61,7 @@ button {
 }
 
 .btn {
-    width: 15%;
+    width: 25%;
     margin-left: 7px;
 }
 

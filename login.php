@@ -7,9 +7,16 @@
     <title>Admin-Login</title>
     <link rel="stylesheet" href="static/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 
 <body>
+
+<video autoplay muted loop class="Video_BG">
+    <source src="static/5998380-hd_1920_1080_30fps.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <h1 class="pms"><i class="fa-solid fa-stethoscope"></i> <a href="index.php">PMS</a></h1>
     <div class="box">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <h1>Admin</h1>
@@ -18,14 +25,31 @@
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input_box">
-                <input type="password" name="password" placeholder="Password" required>
-                <i class='bx bx-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required id="password">
+                <i class='bx bx-show-alt toggle-password' id="togglePassword" style="cursor:pointer;"></i>
             </div>
             <button type="submit" class="btn">Login</button>
+            <p class="register-link">Don't have an account? <a href="register.php">Register</a></p>
         </form>
         <div id="loginForm"></div>
     </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle icon class
+            this.classList.toggle('bx-show-alt');
+            this.classList.toggle('bx-hide');
+        });
+    </script>
+
 </body>
+
 
 </html>
 

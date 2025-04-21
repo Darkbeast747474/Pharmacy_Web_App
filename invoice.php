@@ -30,27 +30,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO sales_records (medication_id, staff_id, quantity_sold, total_price, customer_name, payment_method) 
                 VALUES ('$medication_id', '$staff_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
 
-        // Update stock quantity in medications table
-        $update_stock_sql = "UPDATE medications SET stock_quantity = '$new_stock_quantity' WHERE medication_id = '$medication_id'";
+        if (mysqli_query($con, $sql)) {
+            $sale_id = mysqli_insert_id($con); // ✅ capture ID before next queries
 
-        // Update staff total sales
-        $update_staff_sales_sql = "UPDATE staff SET total_sales = total_sales + '$total_price' WHERE staff_id = '$staff_id'";
+            // Update stock quantity in medications table
+            $update_stock_sql = "UPDATE medications SET stock_quantity = '$new_stock_quantity' WHERE medication_id = '$medication_id'";
+            $update_staff_sales_sql = "UPDATE staff SET total_sales = total_sales + '$total_price' WHERE staff_id = '$staff_id'";
 
-        if (mysqli_query($con, $sql) && mysqli_query($con, $update_stock_sql) && mysqli_query($con, $update_staff_sales_sql)) {
-            $success_message = "Sale recorded, stock updated, and staff sales updated successfully!";
+            if (mysqli_query($con, $update_stock_sql) && mysqli_query($con, $update_staff_sales_sql)) {
+                header("Location: generate_invoice.php?generate_invoice=$sale_id");
+                exit();
+            } else {
+                $error_message = "Sale recorded but failed to update stock or staff.";
+            }
         } else {
-            $error_message = "Error while recording sale, updating stock, or updating staff sales.";
+            $error_message = "Error while recording sale.";
         }
     } else {
         $error_message = "Insufficient stock for this medication.";
     }
 }
 
-if (isset($_GET['generate_invoice'])) {
-    $id = $_GET['generate_invoice'];
-    header("Location: export_sales_invoice.php?generate_invoice=$id");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
