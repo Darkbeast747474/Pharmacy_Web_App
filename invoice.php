@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$admin_id','$medication_id', '$staff_id', '$quantity', '$total_price', '$customer_name', '$payment_method')";
 
         if (mysqli_query($con, $sql)) {
-            $sale_id = mysqli_insert_id($con); // ✅ capture ID before next queries
+            $sale_id = mysqli_insert_id($con); 
 
             // Update stock quantity in medications table
             $update_stock_sql = "UPDATE medications SET stock_quantity = '$new_stock_quantity' WHERE medication_id = '$medication_id'";
