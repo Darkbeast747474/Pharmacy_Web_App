@@ -39,3 +39,5 @@
 
 - Printable reports for administration and audit purposes
 
+
+### Import The Database file `Database/pharma.sql` to Check Thee Database designing
